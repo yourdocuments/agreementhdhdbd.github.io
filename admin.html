@@ -5,9 +5,9 @@
 <style>
 :root{--teal:#0F4C45;--gold:#E3A008;--line:#CBD8D4;--bg:#EEF3F1}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px/1.5 system-ui,sans-serif;color:#17201E}
-header{background:var(--teal);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+header{background:linear-gradient(135deg,#0F4C45,#14786C);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
 main{max-width:980px;margin:0 auto;padding:16px}
-.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 24px #0f4c4512;padding:16px;margin-bottom:14px}
 input,select{padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;width:100%}
 button{border:0;border-radius:8px;padding:10px 16px;font:600 14px inherit;cursor:pointer;background:var(--teal);color:#fff}
 button.sec{background:#E1EAE7;color:#17201E}
@@ -75,11 +75,14 @@ function detail(a){
   const rows=[["Nam",a.name],["Mobile",a.phone],["Email",a.email||"-"],...Object.entries(a.fields||{}),["Shomoy",when(a)],["Hash (SHA-256)",a.hash],["Device",a.ua||"-"]];
   rows.forEach(([k,v])=>{const dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=k;dd.textContent=v;dl.append(dt,dd)});
   d.appendChild(dl);
-  const im=document.createElement("img");im.className="sig";im.src=a.sig;im.alt="Signature";d.appendChild(im);
+  const im=document.createElement("img");im.className="sig";im.src=a.sig;im.alt="Signature";d.appendChild(im);if(a.thumb){const th=document.createElement("img");th.className="sig";th.src=a.thumb;th.alt="Thumb";th.style.cssText="max-width:150px;margin-inline-start:10px";d.appendChild(th)}
   const b=document.createElement("div");b.className="bar noprint";b.style.marginTop="12px";
   [["approved","Approve"],["rejected","Reject"]].forEach(([s,t])=>{const x=document.createElement("button");x.textContent=t;
     x.onclick=async()=>{await updateDoc(doc(db,"agreements",a.id),{status:s});a.status=s;render();detail(a)};b.appendChild(x)});
   const p=document.createElement("button");p.className="sec";p.textContent="Print / PDF";p.onclick=()=>print();b.appendChild(p);
+  const lk=new URL("view.html?id="+a.id,location.href).href;
+  const m=document.createElement("button");m.textContent="Email copy to client";m.onclick=()=>{location.href="mailto:"+a.email+"?subject="+encodeURIComponent("Your signed agreement - SNK")+"&body="+encodeURIComponent("Dear "+a.name+",\n\nYour signed agreement is saved. You can view, print or save it as PDF here:\n"+lk+"\n\nAgreement ID: "+a.id+"\n\nThank you,\nSNK")};b.appendChild(m);
+  const cp=document.createElement("button");cp.className="sec";cp.textContent="Copy link";cp.onclick=()=>navigator.clipboard.writeText(lk);b.appendChild(cp);
   d.appendChild(b);d.scrollIntoView({behavior:"smooth"})}
 $("csv").onclick=()=>{
   const e=v=>'"'+String(v??"").replace(/"/g,'""')+'"';

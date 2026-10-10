@@ -65,6 +65,57 @@ canvas{width:100%;height:230px;border:2px dashed var(--teal2);border-radius:14px
 .sum{width:100%;border-collapse:collapse;margin-top:10px}.sum td{padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}.sum td:first-child{color:var(--mute);width:38%}
 .sig{max-width:280px;border:1px solid var(--line);border-radius:10px;background:#fff}
 .stamp{font-size:13px;color:var(--mute);word-break:break-all}
+.demoBar{background:var(--gold);color:#3A2A00;text-align:center;font-weight:700;padding:6px 10px}
+.how{margin-top:18px}.how ol{padding-inline-start:22px;margin:0 0 10px}.how li{margin-bottom:4px}.how p{color:var(--mute);font-size:15px}
+/* ===== visual polish ===== */
+:root{--grad:linear-gradient(135deg,#0F4C45,#14786C);--sh:0 10px 30px #0f4c4518}
+body{background:radial-gradient(#0f4c4510 1px,transparent 1px) 0 0/22px 22px,var(--bg)}
+header{background:#0F4C45ee;backdrop-filter:blur(10px)}
+.hero{position:relative;overflow:hidden;border-radius:0 0 44px 44px;padding:54px 18px 96px;background:radial-gradient(700px 320px at 85% -10%,#2aa89455,transparent),radial-gradient(500px 260px at 0% 110%,#E3A00833,transparent),linear-gradient(160deg,#0F4C45,#082B27)}
+.hero:before{content:"";position:absolute;inset:0;opacity:.09;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M28 4l7 17 17 7-17 7-7 17-7-17-17-7 17-7z' fill='none' stroke='white' stroke-width='1.2'/%3E%3C/svg%3E")}
+.hero>*{position:relative}
+.hero h1{font-size:clamp(28px,6vw,46px);letter-spacing:-.5px;text-wrap:balance}
+.chips span{backdrop-filter:blur(6px);font-weight:600}
+.chips span:before{content:"\2713";color:var(--gold);margin-inline-end:7px;font-weight:800}
+#home{margin-top:-60px}
+.opt{position:relative;overflow:hidden;border-radius:20px;padding:26px;box-shadow:var(--sh)}
+.opt:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:.25s}
+.opt:hover:before{transform:scaleX(1)}
+.opt svg{width:54px;height:54px;padding:13px;border-radius:16px;background:var(--grad);color:#fff;box-shadow:0 8px 18px #0f4c4533}
+.opt em:after{content:" \2192"}html[dir=rtl] .opt em:after{content:" \2190"}
+.card{border-radius:20px;box-shadow:var(--sh);animation:up .35s ease both}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.how{padding:26px}
+.how ol{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:s;margin:14px 0}
+.how li{counter-increment:s;background:#F4F9F7;border:1px solid var(--line);border-radius:14px;padding:14px 12px;text-align:center;font-size:14.5px;line-height:1.5}
+.how li:before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;margin:0 auto 8px;border-radius:50%;background:var(--gold);color:#3A2A00;font:800 16px "Bricolage Grotesque",sans-serif}
+@media(max-width:640px){.how ol{grid-template-columns:1fr 1fr}}
+.stp li:not(:last-child):after{content:"";position:absolute;top:15px;inset-inline-start:calc(50% + 20px);inset-inline-end:calc(-50% + 20px);height:3px;border-radius:3px;background:var(--line)}
+.stp li.ok:not(:last-child):after{background:var(--teal)}
+.stp li b{position:relative;z-index:1;box-shadow:0 2px 6px #0001}
+.stp li.on b{box-shadow:0 0 0 5px #E3A00833}
+.terms{background:linear-gradient(#FAFCFB,#fff);border-radius:14px}
+.terms li::marker{color:var(--teal);font-weight:800}
+.terms h3{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);color:var(--teal)}
+.ayat{background:linear-gradient(90deg,#FFF6D8,#FFFDF4);border-radius:10px;border-inline-start:5px solid var(--gold)}
+input{background:#F8FBFA;border-radius:12px;padding:13px 15px;transition:.15s}
+input:focus{background:#fff;border-color:var(--teal2);box-shadow:0 0 0 4px #14695f22;outline:none}
+button{transition:.15s}
+.pri{background:var(--grad);box-shadow:0 8px 18px #0f4c4540}
+.pri:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 12px 22px #0f4c4550;background:var(--grad)}
+.sec:hover{background:#D5E5E0}
+.chk{background:#F4F9F7;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+canvas{background:repeating-linear-gradient(#fff 0 31px,#EEF4F2 31px 32px);border-radius:16px;border:2px dashed #14695F}
+.padw:before{content:"\2715";position:absolute;inset-inline-start:22px;bottom:50px;color:#9DB3AE;font-size:18px;pointer-events:none}
+#thumbPrev,#thumbOut{border-radius:14px;box-shadow:0 4px 12px #0001}
+#done{border:2px solid var(--gold);background:linear-gradient(#fff,#FFFCF1);position:relative}
+#done:before{content:"SNK";position:absolute;inset-inline-end:18px;top:14px;font:800 13px "Bricolage Grotesque",sans-serif;letter-spacing:3px;color:#C9A13B}
+.ok{width:78px;height:78px;background:linear-gradient(135deg,#E3F6E9,#C3EBD0);box-shadow:0 0 0 8px #E3F6E966;animation:pop .5s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.sum td:first-child{font-weight:600}
+.foot{text-align:center;color:var(--mute);font-size:13px;padding:6px 16px 36px}
+.foot:before{content:"\1F512  "}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media print{header,.stp,.bar,.noprint,.hero{display:none!important}body{background:#fff}.card{border:0;box-shadow:none}}
 </style>
 </head>
@@ -73,6 +124,7 @@ canvas{width:100%;height:230px;border:2px dashed var(--teal2);border-radius:14px
   <div class="brand"><i>S</i><span data-i="brand"></span></div>
   <div class="lg" role="group" aria-label="Language"><button data-l="0">EN</button><button data-l="1">বাং</button><button data-l="2">اردو</button></div>
 </header>
+<div id="demoBar" class="demoBar hide" data-i="demoB"></div>
 
 <section id="home">
   <div class="hero">
@@ -88,6 +140,7 @@ canvas{width:100%;height:230px;border:2px dashed var(--teal2);border-radius:14px
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5.2a3.2 3.2 0 0 1 0 6M18 14.4c1.8.7 3 2.5 3 5.6"/></svg>
         <b data-i="pT"></b><span data-i="pD"></span><em data-i="start"></em></button>
     </div>
+    <div class="card how"><h3 data-i="howT"></h3><ol><li data-i="h1"></li><li data-i="h2"></li><li data-i="h3"></li><li data-i="h4"></li></ol><p data-i="trustT"></p><button class="sec" id="demoBtn" data-i="demo"></button></div>
   </main>
 </section>
 
@@ -118,6 +171,9 @@ canvas{width:100%;height:230px;border:2px dashed var(--teal2);border-radius:14px
     <h2 data-i="signT"></h2><p data-i="signS" style="color:var(--mute);margin:0 0 12px"></p>
     <div class="padw"><canvas id="pad" aria-label="Signature pad"></canvas><span data-i="signHint"></span></div>
     <div style="margin-top:10px"><button class="sec" id="clr" data-i="clear"></button></div>
+    <h3 style="margin-top:22px" data-i="thumbT"></h3><p data-i="thumbS" style="color:var(--mute);margin:0 0 10px"></p>
+    <label class="sec" for="thumb" data-i="thumbBtn" style="display:inline-block;cursor:pointer;padding:12px 20px;border-radius:12px;font-weight:600;margin:0"></label>
+    <input id="thumb" type="file" accept="image/*" class="hide"><div><img id="thumbPrev" class="sig hide" alt="" style="margin-top:10px;max-width:160px"></div>
     <div class="err" id="e3"></div>
     <div class="bar"><button class="sec" data-go="login" data-i="back"></button><button class="pri" id="n3" data-i="signBtn"></button></div>
   </section>
@@ -127,15 +183,17 @@ canvas{width:100%;height:230px;border:2px dashed var(--teal2);border-radius:14px
     <h2 id="dt" style="text-align:center"></h2>
     <p class="noprint" data-i="doneM" style="text-align:center;color:var(--mute);margin:0"></p>
     <table class="sum" id="sum"></table>
-    <h3 style="margin-top:16px" data-i="sigL"></h3><img id="sigOut" class="sig" alt="">
+    <h3 style="margin-top:16px" data-i="sigL"></h3><img id="sigOut" class="sig" alt=""><h3 style="margin-top:16px" data-i="thumbL"></h3><img id="thumbOut" class="sig" alt="" style="max-width:160px">
     <p class="stamp" id="stamp"></p>
     <div class="bar noprint"><button class="sec" onclick="window.print()" data-i="print"></button><button class="pri" id="wa" data-i="wa"></button></div>
   </section>
 </main>
+<footer class="foot" data-i="foot"></footer>
 
 <script>
 // ===== SETTINGS =====
-const WHATSAPP = "8801XXXXXXXXX"; // country code shoho, + chara
+const OWNER_EMAIL = "thesnkgraphic@email.com";
+const EMAILJS = {service:"YOUR_SERVICE_ID",template:"YOUR_TEMPLATE_ID",key:"YOUR_PUBLIC_KEY"}; // emailjs.com theke
 const COMMISSION = "XX%"; // partner commission-er har
 
 const LC=["en","bn","ur"],LOC=["en-GB","bn-BD","ur-PK"];
@@ -161,7 +219,7 @@ scrollMsg:["Scroll to the end of the terms first","আগে শর্তের 
 quran:["Guidance from the Quran (meaning)","কুরআনের নির্দেশনা (অর্থ)","قرآن کی رہنمائی (مفہوم)"],
 loginT:["Login","লগইন","لاگ اِن"],
 loginS:["Enter your details before signing.","স্বাক্ষরের আগে আপনার পরিচয় দিন।","دستخط سے پہلے اپنی تفصیلات درج کریں۔"],
-name:["Full name","পুরো নাম","پورا نام"],phone:["Mobile number","মোবাইল নম্বর","موبائل نمبر"],email:["Email (optional)","ইমেইল (ঐচ্ছিক)","ای میل (اختیاری)"],
+name:["Full name","পুরো নাম","پورا نام"],phone:["Mobile number","মোবাইল নম্বর","موبائل نمبر"],email:["Email","ইমেইল","ای میل"],
 addrC:["Address / business name","ঠিকানা / ব্যবসার নাম","پتہ / کاروبار کا نام"],
 addrP:["Address / area","ঠিকানা / এলাকা","پتہ / علاقہ"],
 trx:["Payment method & Transaction ID","পেমেন্ট মাধ্যম ও ট্রানজেকশন আইডি","ادائیگی کا طریقہ اور ٹرانزیکشن آئی ڈی"],
@@ -174,16 +232,31 @@ signS:["Sign below with your finger, touch pen or mouse.","নিচে আঙ�
 signHint:["Sign here","এখানে সই করুন","یہاں دستخط کریں"],
 clear:["Clear","মুছুন","صاف کریں"],signBtn:["Finish signing","স্বাক্ষর শেষ","دستخط مکمل"],
 saving:["Saving...","সংরক্ষণ হচ্ছে...","محفوظ ہو رہا ہے..."],
-doneM:["Keep a PDF copy and confirm on WhatsApp.","পিডিএফ কপি রেখে দিন এবং হোয়াটসঅ্যাপে নিশ্চিত করুন।","پی ڈی ایف کاپی رکھیں اور واٹس ایپ پر تصدیق کریں۔"],
+doneM:["Save your PDF copy. A second copy is emailed to SNK.","আপনার পিডিএফ কপি সেভ করুন। দ্বিতীয় কপি SNK-কে ইমেইল করা হয়েছে।","اپنی پی ڈی ایف کاپی محفوظ کریں۔ دوسری کاپی SNK کو ای میل کی گئی ہے۔"],
 print:["PDF / Print","পিডিএফ / প্রিন্ট","پی ڈی ایف / پرنٹ"],
-wa:["Confirm on WhatsApp","হোয়াটসঅ্যাপে নিশ্চিত করুন","واٹس ایپ پر تصدیق کریں"],
+wa:["Email this agreement","ইমেইলে পাঠান","ای میل کے ذریعے بھیجیں"],
 sigL:["Signature","স্বাক্ষর","دستخط"],idL:["Agreement ID","চুক্তি আইডি","معاہدہ آئی ڈی"],timeL:["Time","সময়","وقت"],
 eName:["Enter your full name.","পুরো নাম লিখুন।","پورا نام لکھیں۔"],
 ePhone:["Enter a valid mobile number.","সঠিক মোবাইল নম্বর দিন।","درست موبائل نمبر درج کریں۔"],
-eMail:["Email looks invalid.","ইমেইল সঠিক নয়।","ای میل درست نہیں۔"],
+eMail:["Enter a valid email.","সঠিক ইমেইল দিন।","درست ای میل درج کریں۔"],
 eReq:["Please fill all fields.","সব ঘর পূরণ করুন।","تمام خانے پُر کریں۔"],
 eSign:["Please sign first.","আগে সই করুন।","پہلے دستخط کریں۔"],
-eSave:["Could not save. Check internet and retry.","সংরক্ষণ হয়নি, ইন্টারনেট দেখে আবার চেষ্টা করুন।","محفوظ نہیں ہو سکا، انٹرنیٹ دیکھ کر دوبارہ کوشش کریں۔"]
+eSave:["Could not save. Check internet and retry.","সংরক্ষণ হয়নি, ইন্টারনেট দেখে আবার চেষ্টা করুন।","محفوظ نہیں ہو سکا، انٹرنیٹ دیکھ کر دوبارہ کوشش کریں۔"],
+foot:["Secure digital agreement | SNK","নিরাপদ ডিজিটাল চুক্তি | SNK","محفوظ ڈیجیٹل معاہدہ | SNK"],
+thumbT:["Thumb impression","বুড়ো আঙুলের ছাপ","انگوٹھے کا نشان"],
+thumbS:["Press your thumb on an ink pad on paper, then take a clear photo and upload it.","কাগজে কালির প্যাডে বুড়ো আঙুল চেপে ছাপ নিন, তারপর পরিষ্কার ছবি তুলে আপলোড করুন।","کاغذ پر سیاہی کے پیڈ سے انگوٹھے کا نشان لیں، پھر واضح تصویر کھینچ کر اپلوڈ کریں۔"],
+thumbBtn:["Take / upload photo","ছবি তুলুন / আপলোড করুন","تصویر کھینچیں / اپلوڈ کریں"],
+thumbL:["Thumb impression","বুড়ো আঙুলের ছাপ","انگوٹھے کا نشان"],
+eThumb:["Please add your thumb impression.","বুড়ো আঙুলের ছাপ যোগ করুন।","انگوٹھے کا نشان شامل کریں۔"],
+emailSent:["Copy emailed to SNK.","SNK-কে ইমেইলে কপি পাঠানো হয়েছে।","SNK کو ای میل پر کاپی بھیج دی گئی۔"],
+demo:["Try a demo","ডেমো দেখুন","ڈیمو دیکھیں"],
+demoB:["DEMO: nothing is saved or sent","ডেমো: কিছুই সংরক্ষণ বা পাঠানো হচ্ছে না","ڈیمو: کچھ بھی محفوظ یا ارسال نہیں ہو رہا"],
+howT:["How it works","কীভাবে কাজ করে","یہ کیسے کام کرتا ہے"],
+h1:["Read the terms","শর্ত পড়ুন","شرائط پڑھیں"],
+h2:["Log in with your details","আপনার তথ্য দিয়ে লগইন করুন","اپنی تفصیلات سے لاگ اِن کریں"],
+h3:["Sign and add your thumb impression","সই করুন ও আঙুলের ছাপ দিন","دستخط کریں اور انگوٹھے کا نشان لگائیں"],
+h4:["Keep your copy; SNK gets the second copy by email","আপনার কপি রাখুন; দ্বিতীয় কপি ইমেইলে SNK পায়","اپنی کاپی رکھیں؛ دوسری کاپی ای میل پر SNK کو ملتی ہے"],
+trustT:["Your signed copy has a unique ID and a hash, so it cannot be altered unnoticed. Try the demo first: nothing is saved.","আপনার সই করা কপিতে আলাদা আইডি ও হ্যাশ থাকে, তাই কেউ গোপনে বদলাতে পারে না। আগে ডেমো চালিয়ে দেখুন: কিছুই সংরক্ষণ হবে না।","آپ کی دستخط شدہ کاپی پر منفرد آئی ڈی اور ہیش ہوتا ہے، اس لیے اسے چپکے سے بدلا نہیں جا سکتا۔ پہلے ڈیمو آزما لیں: کچھ محفوظ نہیں ہوگا۔"]
 };
 // Quran verses (meaning only) - publish-er age quran.com theke miliye nin
 const AY={
@@ -228,7 +301,7 @@ const D={
  partner:{t:"tP",items:TP,ay:"abcdefg",fields:[["addr","addrP"],["payout","payout","tel"],["wname","wname"],["wphone","wphone","tel"]]}};
 
 const $=id=>document.getElementById(id), t=k=>S[k][l];
-let l=0,mode=null,signed=false,read=false,agId="",cur="home",res=null;
+let l=0,mode=null,signed=false,read=false,agId="",cur="home",res=null,demo=false,thumb="";
 try{l=+(localStorage.getItem("lg")||0)}catch(e){}
 
 function applyLang(){
@@ -251,13 +324,13 @@ function renderExtra(){
 
 const STEP={home:0,"terms-s":1,login:2,signing:3,done:4};
 function show(id){
-  cur=id;["terms-s","login","signing","done"].forEach(s=>$(s).classList.toggle("hide",s!==id));
+  cur=id;$("demoBar").classList.toggle("hide",!(demo&&id!=="home"));["terms-s","login","signing","done"].forEach(s=>$(s).classList.toggle("hide",s!==id));
   $("home").classList.toggle("hide",id!=="home");$("flow").classList.toggle("hide",id==="home");
   const n=STEP[id];document.querySelectorAll("#stp li").forEach((li,i)=>{li.classList.toggle("on",i+1===n);li.classList.toggle("ok",i+1<n)});
   window.scrollTo({top:0});if(id==="signing")size()}
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
 document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{
-  mode=b.dataset.mode;res=null;read=false;$("agree").checked=false;renderTerms();renderExtra();upd();show("terms-s");$("terms").scrollTop=0;
+  demo=false;thumb="";$("thumbPrev").classList.add("hide");mode=b.dataset.mode;res=null;read=false;$("agree").checked=false;renderTerms();renderExtra();upd();show("terms-s");$("terms").scrollTop=0;
   if($("terms").scrollHeight<=$("terms").clientHeight+8){read=true;upd()}});
 $("b1").onclick=()=>show("home");
 $("terms").addEventListener("scroll",()=>{const e=$("terms");if(e.scrollTop+e.clientHeight>=e.scrollHeight-8){read=true;upd()}});
@@ -268,7 +341,7 @@ $("n2").onclick=()=>{
   const p=$("phone").value.replace(/[\s-]/g,""),E=k=>$("e2").textContent=t(k);
   if($("name").value.trim().length<3)return E("eName");
   if(!/^\+?\d{8,15}$/.test(p))return E("ePhone");
-  if($("email").value&&!/^\S+@\S+\.\S+$/.test($("email").value))return E("eMail");
+  if(!/^\S+@\S+\.\S+$/.test($("email").value.trim()))return E("eMail");
   for(const f of D[mode].fields)if($(f[0]).value.trim().length<3)return E("eReq");
   $("e2").textContent="";show("signing")};
 
@@ -285,26 +358,47 @@ pad.addEventListener("pointermove",e=>{if(!down)return;const p=P(e);
 ["pointerup","pointercancel"].forEach(x=>pad.addEventListener(x,()=>down=false));
 $("clr").onclick=()=>{ctx.clearRect(0,0,pad.width,pad.height);signed=false;pad.nextElementSibling.style.display=""};
 
+$("thumb").onchange=e=>{const f=e.target.files[0];if(!f)return;const im=new Image();
+  im.onload=()=>{const k=Math.min(1,640/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*k;c.height=im.height*k;
+    c.getContext("2d").drawImage(im,0,0,c.width,c.height);thumb=c.toDataURL("image/jpeg",.7);$("thumbPrev").src=thumb;$("thumbPrev").classList.remove("hide");URL.revokeObjectURL(im.src)};
+  im.src=URL.createObjectURL(f)};
+$("demoBtn").onclick=()=>{
+  document.querySelector("[data-mode=client]").click();demo=true;
+  $("name").value="Demo User";$("phone").value="01700000000";$("email").value="demo@example.com";$("addr").value="Demo Shop, Dhaka";$("trx").value="bKash DEMO123456";
+  $("agree").checked=true;read=true;upd();
+  const c=document.createElement("canvas");c.width=c.height=240;const g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,240,240);g.strokeStyle="#222";g.lineWidth=3;
+  for(let i=1;i<=9;i++){g.beginPath();g.ellipse(120,125,i*11,i*13,0,0,7);g.stroke()}
+  thumb=c.toDataURL("image/jpeg",.7);$("thumbPrev").src=thumb;$("thumbPrev").classList.remove("hide");
+  $("demoBar").classList.remove("hide")};
 $("n3").onclick=async()=>{
-  if(!signed)return $("e3").textContent=t("eSign");$("e3").textContent="";
+  if(!signed)return $("e3").textContent=t("eSign");if(!thumb)return $("e3").textContent=t("eThumb");$("e3").textContent="";
   const d=D[mode],sig=pad.toDataURL("image/png"),fields={};d.fields.forEach(f=>fields[f[0]]=$(f[0]).value.trim());
   const vals={name:$("name").value.trim(),phone:$("phone").value.trim(),email:$("email").value.trim()};
-  const raw=mode+$("terms").innerText+JSON.stringify([vals,fields,sig]);
+  const raw=mode+$("terms").innerText+JSON.stringify([vals,fields,sig,thumb]);
   const hash=[...new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(raw)))].map(b=>b.toString(16).padStart(2,"0")).join("");
   $("n3").disabled=true;$("n3").textContent=t("saving");
-  try{if(window.saveAgreement)agId=await window.saveAgreement({type:mode,title:S[d.t][0],lang:LC[l],...vals,fields,sig,hash,status:"pending",ua:navigator.userAgent.slice(0,200)})}
+  try{if(demo)agId="DEMO";else if(window.saveAgreement)agId=await window.saveAgreement({type:mode,title:S[d.t][0],lang:LC[l],...vals,fields,sig,thumb,terms:$("terms").innerText,hash,status:"pending",ua:navigator.userAgent.slice(0,200)})}
   catch(e){$("n3").disabled=false;$("n3").textContent=t("signBtn");return $("e3").textContent=t("eSave")}
   $("n3").disabled=false;$("n3").textContent=t("signBtn");
-  res={vals,fields,sig,hash,time:new Date()};renderDone();show("done")};
+  res={vals,fields,sig,thumb,hash,time:new Date()};renderDone();show("done");if(!demo)sendOwnerMail()};
 function renderDone(){
   const d=D[mode],rows=[[t("name"),res.vals.name],[t("phone"),res.vals.phone],[t("email"),res.vals.email||"-"]].concat(d.fields.map(f=>[t(f[1]),res.fields[f[0]]]));
   $("dt").textContent=t(d.t);$("sum").innerHTML=rows.map(()=>"<tr><td></td><td></td></tr>").join("");
   [...$("sum").rows].forEach((tr,i)=>{tr.cells[0].textContent=rows[i][0];tr.cells[1].textContent=rows[i][1]});
-  $("sigOut").src=res.sig;
+  $("sigOut").src=res.sig;$("thumbOut").src=res.thumb;
   $("stamp").textContent=t("idL")+": "+(agId||"-")+" | "+t("timeL")+": "+res.time.toLocaleString(LOC[l])+" | SHA-256: "+res.hash.slice(0,16)+"..."}
-$("wa").onclick=()=>{
-  const d=D[mode],v=res.vals,m=[S[d.t][0],"Name: "+v.name,"Mobile: "+v.phone,"Email: "+v.email].concat(d.fields.map(f=>S[f[1]][0]+": "+res.fields[f[0]])).concat(["Agreement ID: "+agId,"Agreed & signed: "+res.time.toLocaleString("en-GB")]).join("\n");
-  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(m),"_blank")};
+function viewLink(){return new URL("view.html?id="+agId,location.href).href}
+function mailParts(){const d=D[mode],v=res.vals;
+  return{sub:(demo?"[DEMO] ":"")+S[d.t][0]+" - "+v.name,
+  body:[S[d.t][0],"Name: "+v.name,"Mobile: "+v.phone,"Email: "+v.email].concat(d.fields.map(f=>S[f[1]][0]+": "+res.fields[f[0]])).concat(["Agreement ID: "+agId,"Signed: "+res.time.toLocaleString("en-GB"),"View / print: "+viewLink()]).join("\n")}}
+$("wa").onclick=()=>{const m=mailParts();location.href="mailto:"+OWNER_EMAIL+"?subject="+encodeURIComponent(m.sub)+"&body="+encodeURIComponent(m.body)};
+async function sendOwnerMail(){
+  if(EMAILJS.key==="YOUR_PUBLIC_KEY"||!agId)return;
+  try{
+    if(!window.emailjs)await new Promise((ok,no)=>{const x=document.createElement("script");x.src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js";x.onload=ok;x.onerror=no;document.head.appendChild(x)});
+    emailjs.init({publicKey:EMAILJS.key});const m=mailParts();
+    await emailjs.send(EMAILJS.service,EMAILJS.template,{to_email:OWNER_EMAIL,subject:m.sub,message:m.body,reply_to:res.vals.email,client_name:res.vals.name,link:viewLink()});
+    $("stamp").textContent+=" | "+t("emailSent")}catch(e){}}
 applyLang();
 </script>
 <script type="module">

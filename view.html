@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signed Agreement | SNK</title><meta name="robots" content="noindex">
+<style>
+:root{--teal:#0F4C45;--line:#D3DFDB}*{box-sizing:border-box}
+body{margin:0;background:#F1F5F3;font:16px/1.65 system-ui,"Noto Naskh Arabic","Hind Siliguri",sans-serif;color:#16201E}
+header{background:linear-gradient(135deg,#0F4C45,#14786C);color:#fff;padding:16px 20px;font-weight:800;letter-spacing:.3px}
+main{max-width:760px;margin:0 auto;padding:18px 16px 50px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:14px;box-shadow:0 10px 30px #0f4c4514}
+dl{display:grid;grid-template-columns:150px 1fr;gap:6px 12px;margin:0}dt{color:#5B6B67}dd{margin:0;word-break:break-all}
+pre{white-space:pre-wrap;font:inherit;max-height:50vh;overflow:auto;background:#FAFCFB;border:1px solid var(--line);border-radius:10px;padding:14px;margin:0}
+img{max-width:280px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.tag{display:inline-block;padding:2px 12px;border-radius:99px;font-weight:700;font-size:13px;background:#FFF1C9}.approved{background:#CDEED6}.rejected{background:#F8D3D0}
+button{background:var(--teal);color:#fff;border:0;border-radius:10px;padding:12px 22px;font:600 16px inherit;cursor:pointer}
+.err{color:#B3261E}
+@media print{header,button{display:none}body{background:#fff}.card{border:0}pre{max-height:none;border:0}}
+</style></head><body>
+<header>SNK Signed Agreement</header>
+<main><div id="out" class="card">Loading...</div></main>
+<script type="module">
+// ===== index.html-er moto ekoi Firebase config =====
+const cfg={apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT",appId:"YOUR_APP_ID"};
+const out=document.getElementById("out"),id=new URLSearchParams(location.search).get("id");
+const fail=m=>{out.textContent=m;out.className="card err"};
+if(!id||cfg.apiKey==="YOUR_API_KEY")fail("Agreement link is invalid or not configured.");
+else try{
+  const {initializeApp}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+  const {getFirestore,doc,getDoc}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+  const s=await getDoc(doc(getFirestore(initializeApp(cfg)),"agreements",id));
+  if(!s.exists())throw 0;const a=s.data();out.remove();
+  const mk=(t,p={},...c)=>{const e=document.createElement(t);Object.assign(e,p);e.append(...c);return e};
+  const m=document.querySelector("main"),card=(...c)=>m.appendChild(mk("div",{className:"card"},...c));
+  const when=a.createdAt?a.createdAt.toDate().toLocaleString("en-GB"):"-";
+  const dl=mk("dl");[["Agreement ID",id],["Type",a.title],["Name",a.name],["Mobile",a.phone],["Email",a.email],...Object.entries(a.fields||{}),["Signed",when],["SHA-256",a.hash]]
+    .forEach(([k,v])=>dl.append(mk("dt",{},k),mk("dd",{},String(v))));
+  card(mk("h2",{},a.title+" "),mk("span",{className:"tag "+a.status},a.status),dl);
+  if(a.terms)card(mk("h3",{},"Terms"),mk("pre",{dir:a.lang==="ur"?"rtl":"auto"},a.terms));
+  card(mk("h3",{},"Signature"),mk("img",{src:a.sig,alt:"Signature"}),...(a.thumb?[mk("h3",{},"Thumb impression"),mk("img",{src:a.thumb,alt:"Thumb impression",style:"max-width:160px"})]:[]));
+  card(mk("button",{onclick:()=>print()},"Print / Save PDF"));
+}catch(e){fail("Agreement not found.")}
+</script></body></html>
