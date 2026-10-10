@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agreement | SNK</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF3F1;--ink:#17201E;--mute:#5B6B67;--teal:#0F4C45;--gold:#E3A008;--line:#CBD8D4;--err:#B3261E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Hind Siliguri",system-ui,sans-serif}
+header{background:var(--teal);color:#fff;padding:16px 20px;font:800 20px "Bricolage Grotesque",sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1,h2{font-family:"Bricolage Grotesque",sans-serif;margin:0 0 10px}h1{font-size:28px}h2{font-size:19px;margin-top:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.pick,.row{grid-template-columns:1fr!important}}
+.pick button{background:#fff;border:2px solid var(--teal);text-align:left;padding:18px;border-radius:14px;cursor:pointer;font:inherit}
+.pick button:hover{background:#F2F8F6}.pick b{display:block;font:800 20px "Bricolage Grotesque",sans-serif;color:var(--teal)}
+.terms{max-height:46vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#FAFCFB}
+.terms ol{padding-left:20px;margin:0}.terms li{margin-bottom:10px}
+.ayat{border-left:4px solid var(--gold);padding:4px 12px;margin:8px 0;background:#FFF9E8;font-size:15px}
+label{display:block;font-weight:600;margin:12px 0 4px}
+input,textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button{font:600 16px inherit;font-family:inherit;border:0;border-radius:10px;padding:13px 22px;cursor:pointer}
+.pri{background:var(--teal);color:#fff}.pri:disabled{opacity:.4;cursor:not-allowed}.sec{background:#E1EAE7;color:var(--ink)}
+.bar{display:flex;gap:10px;justify-content:space-between;margin-top:18px;flex-wrap:wrap}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-weight:600}.chk input{width:22px;height:22px;margin-top:3px}
+canvas{width:100%;height:220px;border:2px dashed var(--teal);border-radius:10px;background:#fff;touch-action:none;display:block}
+.err{color:var(--err);font-size:14px;min-height:20px;margin-top:8px}
+.hide{display:none}
+.sum{width:100%;border-collapse:collapse}.sum td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}.sum td:first-child{color:var(--mute);width:36%}
+.sig{max-width:280px;border:1px solid var(--line);border-radius:8px}
+.done{background:#E6F4EA;border:1px solid #9BD3A8;border-radius:10px;padding:12px;margin-bottom:14px}
+.back{background:none;color:var(--teal);padding:0 0 10px;text-decoration:underline}
+@media print{header,.bar,.noprint{display:none!important}body{background:#fff}.card{border:0}}
+</style>
+</head>
+<body>
+<header>SNK Agreement</header>
+<main>
+
+<!-- HOME -->
+<section id="home">
+  <h1>Kon agreement-ti korben?</h1>
+  <p>Shorto poRe, raji hole login kore sign korun. Shesh e agreement-er copy PDF hishebe rekhe nite parben.</p>
+  <div class="pick">
+    <button data-mode="client"><b>Client Order</b>Website/service order-er agreement</button>
+    <button data-mode="partner"><b>Partner</b>Partner/representative hishebe kaj korar agreement</button>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section id="terms-s" class="card hide">
+  <button class="back" id="b1">Home-e fire zan</button>
+  <h1 id="ttl"></h1>
+  <div class="terms" id="terms"></div>
+  <label class="chk"><input type="checkbox" id="agree"> Ami shob shorto poreechi, bujhechi ebong raji achi.</label>
+  <div class="bar"><span></span><button class="pri" id="n1" disabled>Raji, login-e zan</button></div>
+</section>
+
+<!-- LOGIN -->
+<section id="login" class="card hide">
+  <h1>Login</h1>
+  <p>Sign korar age nijer porichoy din.</p>
+  <label for="name">Poorno nam</label><input id="name" autocomplete="name">
+  <div class="row">
+    <div><label for="phone">Mobile number</label><input id="phone" type="tel" autocomplete="tel"></div>
+    <div><label for="email">Email</label><input id="email" type="email" autocomplete="email"></div>
+  </div>
+  <div id="extra"></div>
+  <div class="err" id="e2"></div>
+  <div class="bar"><button class="sec" data-go="terms-s">Pechone</button><button class="pri" id="n2">Login korun</button></div>
+</section>
+
+<!-- SIGNING -->
+<section id="signing" class="card hide">
+  <h1>Signing</h1>
+  <p>Niche anguler ba touch pen diye sign korun.</p>
+  <canvas id="pad" aria-label="Signature pad"></canvas>
+  <div style="margin-top:8px"><button class="sec" id="clr">Muche felun</button></div>
+  <div class="err" id="e3"></div>
+  <div class="bar"><button class="sec" data-go="login">Pechone</button><button class="pri" id="n3">Sign shesh</button></div>
+</section>
+
+<!-- DONE -->
+<section id="done" class="card hide">
+  <div class="done noprint"><b>Agreement sompurno.</b> PDF copy rekhe din, ar WhatsApp-e pathiye confirm korun.</div>
+  <h1 id="dt"></h1>
+  <table class="sum" id="sum"></table>
+  <h2>Signature</h2><img id="sigOut" class="sig" alt="Signature">
+  <p style="font-size:13px;color:var(--mute)" id="stamp"></p>
+  <div class="bar noprint"><button class="sec" onclick="window.print()">PDF / Print</button><button class="pri" id="wa">WhatsApp-e confirm</button></div>
+</section>
+</main>
+
+<script>
+// ===== SETTINGS =====
+const WHATSAPP = "8801XXXXXXXXX"; // country code shoho, + chara
+
+const Q = '<h2>Quran-er nirdesh (artho)</h2>'
+ + '<div class="ayat">Al-Maidah 5:1 : Mumin-ra, tomra chukti puron koro.</div>'
+ + '<div class="ayat">Al-Isra 17:34 : Oangikar puron koro; oangikar shomporke jiggasha kora hobe.</div>'
+ + '<div class="ayat">Al-Baqarah 2:282 : Len-den likhe rakho ebong shakkhi rakho.</div>'
+ + '<div class="ayat">An-Nisa 4:29 : Poroshpor shommotite byabsha koro.</div>'
+ + '<p style="font-size:13px;color:var(--mute)">Publish-er age ayat quran.com theke ekbar miliye nin.</p>';
+const D = {
+ client:{title:"Client Order Agreement",items:[
+  "<b>Service:</b> Je package nirbachon korben shudhu sheti-i deya hobe. Baire kaj alada charge.",
+  "<b>Mullo o payment:</b> Advance bKash/Nagad/Rocket-e diye Transaction ID dite hobe. Baki taka agreed shomoy-e.",
+  "<b>Delivery:</b> Agreed shomoy-er moddhe. Client tothho/logo deri korle shomoy bere zabe.",
+  "<b>Client-er daitto:</b> Shothik tothho o nijer adhikar-er content deya.",
+  "<b>Revision:</b> Package-e likha songkha porjonto free, tar por charge.",
+  "<b>Cancel o refund:</b> Kaj shuru-r age cancel hole advance-er ongsho ferot. Shuru hole toiri ongsher mullo kete baki ferot.",
+  "<b>Malikana:</b> Shompurno payment-er por website client-er.",
+  "<b>Gopon tothho:</b> Client-er tothho third party-ke deya hobe na.",
+  "<b>Support:</b> Delivery-r por package onujayi free support.",
+  "<b>Dayitto shimabaddhota:</b> Hosting, domain, payment gateway-er shomossha-r jonno dayi noy.",
+  "<b>Biroth nishpotti:</b> Age alochona, tarpor Bangladesher prochollito ain.",
+  "<b>Digital shommoti:</b> Digital signature ei agreement-er jonno gronoyogyo."],
+  fields:[["addr","Thikana / business-er nam"],["trx","Payment method o Transaction ID"]]},
+ partner:{title:"Partner Agreement",items:[
+  "<b>Bhumika:</b> Partner SNK-er service-er proshar o client anar kaj korben. Partner SNK-er karmochari noy, shadhin shohojogi.",
+  "<b>Commission:</b> Commission-er har o payment-er shomoy agreed hishebe likhito thakbe. Client-er taka SNK-te jama hole-i commission pawa zabe.",
+  "<b>Shotota:</b> Mithya proti-shruti, vul tothho ba bhua offer deya zabe na. SNK-er nam-e nijer moto kono chukti kora zabe na.",
+  "<b>Client-er taka:</b> Client-er taka nijer kache rakha zabe na; shudhu SNK-er nirdharito payment number-e neya hobe.",
+  "<b>Gopon tothho:</b> Client o SNK-er tothho, mullo-talika ba kaj-er poddhoti onno keu-ke deya zabe na.",
+  "<b>Brand bebohar:</b> SNK-er logo o nam shudhu onumoti niye bebohar kora zabe.",
+  "<b>Shomapti:</b> Dui pokkher je keu agrim noticei-e shohojogita shesh korte pare. Chukti bhonge holey baki commission atkano zete pare.",
+  "<b>Dayitto:</b> Partner-er nijer kothay ba kaje SNK dayi noy.",
+  "<b>Biroth nishpotti:</b> Age alochona, tarpor Bangladesher prochollito ain.",
+  "<b>Digital shommoti:</b> Digital signature ei agreement-er jonno gronoyogyo."],
+  fields:[["addr","Thikana / elaka"],["payout","Commission paoar bKash/Nagad number"]]}
+};
+const $=id=>document.getElementById(id);
+let mode="client",signed=false,read=false;
+function show(id){["home","terms-s","login","signing","done"].forEach(s=>$(s).classList.toggle("hide",s!==id));window.scrollTo({top:0});if(id==="signing")size()}
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
+document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{
+  mode=b.dataset.mode;const d=D[mode];$("ttl").textContent=d.title;
+  $("terms").innerHTML="<ol>"+d.items.map(i=>"<li>"+i+"</li>").join("")+"</ol>"+Q;
+  $("extra").innerHTML=d.fields.map(f=>'<label for="'+f[0]+'">'+f[1]+'</label><input id="'+f[0]+'">').join("");
+  read=false;$("agree").checked=false;upd();show("terms-s");$("terms").scrollTop=0});
+$("b1").onclick=()=>show("home");
+$("terms").addEventListener("scroll",()=>{const t=$("terms");if(t.scrollTop+t.clientHeight>=t.scrollHeight-8){read=true;upd()}});
+$("agree").onchange=upd;
+function upd(){const ok=$("agree").checked&&read;$("n1").disabled=!ok;$("n1").textContent=$("agree").checked&&!read?"Age shesh porjonto scroll korun":"Raji, login-e zan"}
+$("n1").onclick=()=>show("login");
+$("n2").onclick=()=>{
+  const p=$("phone").value.replace(/[\s-]/g,"");
+  if($("name").value.trim().length<3)return $("e2").textContent="Poorno nam likhun.";
+  if(!/^\+?\d{8,15}$/.test(p))return $("e2").textContent="Shothik mobile number din.";
+  if($("email").value&&!/^\S+@\S+\.\S+$/.test($("email").value))return $("e2").textContent="Email thik nei.";
+  for(const f of D[mode].fields)if($(f[0]).value.trim().length<3)return $("e2").textContent=f[1]+" din.";
+  $("e2").textContent="";show("signing")};
+
+// Signature: finger, touch pen, mouse (pointer events; pen pressure varies line width)
+const pad=$("pad"),ctx=pad.getContext("2d");let down=false,last=null;
+function size(){const r=pad.getBoundingClientRect(),d=window.devicePixelRatio||1;
+  if(pad.width===Math.round(r.width*d))return;pad.width=r.width*d;pad.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);
+  ctx.lineCap="round";ctx.lineJoin="round";ctx.strokeStyle="#0F2A52";signed=false}
+const P=e=>{const r=pad.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]};
+pad.addEventListener("pointerdown",e=>{e.preventDefault();down=true;pad.setPointerCapture(e.pointerId);last=P(e)});
+pad.addEventListener("pointermove",e=>{if(!down)return;const p=P(e);
+  ctx.lineWidth=e.pointerType==="pen"&&e.pressure?1+e.pressure*3.5:2.6;
+  ctx.beginPath();ctx.moveTo(...last);ctx.lineTo(...p);ctx.stroke();last=p;signed=true});
+["pointerup","pointercancel"].forEach(t=>pad.addEventListener(t,()=>down=false));
+$("clr").onclick=()=>{ctx.clearRect(0,0,pad.width,pad.height);signed=false};
+$("n3").onclick=()=>{
+  if(!signed)return $("e3").textContent="Age sign korun.";$("e3").textContent="";
+  const d=D[mode],rows=[["Nam",$("name").value],["Mobile",$("phone").value],["Email",$("email").value||"-"]]
+    .concat(d.fields.map(f=>[f[1],$(f[0]).value]));
+  $("dt").textContent=d.title;
+  $("sum").innerHTML=rows.map(()=>"<tr><td></td><td></td></tr>").join("");
+  [...$("sum").rows].forEach((tr,i)=>{tr.cells[0].textContent=rows[i][0];tr.cells[1].textContent=rows[i][1]});
+  $("sigOut").src=pad.toDataURL("image/png");
+  $("stamp").textContent="Shomoy: "+new Date().toLocaleString("en-GB")+" | Shorto mene sign kora hoyeche.";
+  show("done")};
+$("wa").onclick=()=>{
+  const d=D[mode],t=[d.title,"Nam: "+$("name").value,"Mobile: "+$("phone").value,"Email: "+$("email").value]
+    .concat(d.fields.map(f=>f[1]+": "+$(f[0]).value)).concat(["Agreement: Agreed & signed "+new Date().toLocaleString("en-GB"),"(Signed PDF copy alada pathabo)"]).join("\n");
+  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(t),"_blank")};
+</script>
+</body>
+</html>
