@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /agreements/{id} {
+      // Je keu agreement jomа dite pare, kintu pore poRte/bodlate pare na
+      allow create: if request.resource.data.type in ['client','partner']
+                    && request.resource.data.status == 'pending'
+                    && request.resource.data.name is string && request.resource.data.name.size() < 120
+                    && request.resource.data.hash is string && request.resource.data.hash.size() == 64
+                    && request.resource.data.sig is string && request.resource.data.sig.size() < 700000
+                    && request.resource.data.createdAt == request.time;
+      // Shudhu admin dekhte o status bodlate pare
+      allow read: if request.auth != null && request.auth.token.email == 'ADMIN_EMAIL_HERE';
+      allow update: if request.auth != null && request.auth.token.email == 'ADMIN_EMAIL_HERE'
+                    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
+      allow delete: if false;
+    }
+  }
+}

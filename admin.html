@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin | SNK Agreement</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--teal:#0F4C45;--gold:#E3A008;--line:#CBD8D4;--bg:#EEF3F1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px/1.5 system-ui,sans-serif;color:#17201E}
+header{background:var(--teal);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+main{max-width:980px;margin:0 auto;padding:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+input,select{padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit;width:100%}
+button{border:0;border-radius:8px;padding:10px 16px;font:600 14px inherit;cursor:pointer;background:var(--teal);color:#fff}
+button.sec{background:#E1EAE7;color:#17201E}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.bar>*{flex:1;min-width:140px}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+tr.r{cursor:pointer}tr.r:hover{background:#F2F8F6}
+.tag{padding:2px 8px;border-radius:99px;font-size:12px;font-weight:700}
+.pending{background:#FFF1C9}.approved{background:#CDEED6}.rejected{background:#F8D3D0}
+.hide{display:none}.err{color:#B3261E;min-height:20px}
+.sig{max-width:300px;border:1px solid var(--line);border-radius:8px;background:#fff}
+dl{display:grid;grid-template-columns:150px 1fr;gap:4px 10px}dt{color:#5B6B67}dd{margin:0;word-break:break-all}
+@media print{header,.bar,#list,.noprint{display:none!important}body{background:#fff}}
+</style></head><body>
+<header><span>SNK Agreement Admin</span><button class="sec hide" id="out">Logout</button></header>
+<main>
+<section id="login" class="card" style="max-width:380px;margin:40px auto">
+  <h2>Admin login</h2>
+  <input id="em" type="email" placeholder="Admin email" autocomplete="username"><br><br>
+  <input id="pw" type="password" placeholder="Password" autocomplete="current-password"><br>
+  <div class="err" id="le"></div><button id="go">Login</button>
+</section>
+<section id="app" class="hide">
+  <div class="bar noprint">
+    <select id="ft"><option value="">Shob dhoron</option><option value="client">Client</option><option value="partner">Partner</option></select>
+    <select id="fs"><option value="">Shob status</option><option>pending</option><option>approved</option><option>rejected</option></select>
+    <input id="q" placeholder="Nam / mobile khujun">
+    <button class="sec" id="csv">CSV download</button>
+  </div>
+  <div class="card" id="list"><table><thead><tr><th>Shomoy</th><th>Dhoron</th><th>Nam</th><th>Mobile</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table><div id="empty" class="hide">Kono agreement nei.</div></div>
+  <div class="card hide" id="det"></div>
+</section>
+</main>
+<script type="module">
+// ===== index.html-er moto ekoi Firebase config =====
+const cfg={apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT",appId:"YOUR_APP_ID"};
+const $=id=>document.getElementById(id);
+if(cfg.apiKey==="YOUR_API_KEY"){$("le").textContent="Age Firebase config boshan.";throw 0}
+const {initializeApp}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+const {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
+const {getFirestore,collection,query,orderBy,getDocs,doc,updateDoc}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+const app=initializeApp(cfg),auth=getAuth(app),db=getFirestore(app);
+let all=[];
+$("go").onclick=()=>signInWithEmailAndPassword(auth,$("em").value,$("pw").value).catch(()=>$("le").textContent="Email/password thik nei.");
+$("out").onclick=()=>signOut(auth);
+onAuthStateChanged(auth,u=>{$("login").classList.toggle("hide",!!u);$("app").classList.toggle("hide",!u);$("out").classList.toggle("hide",!u);if(u)load()});
+async function load(){
+  try{const s=await getDocs(query(collection(db,"agreements"),orderBy("createdAt","desc")));
+    all=s.docs.map(d=>({id:d.id,...d.data()}));render()}
+  catch(e){$("rows").innerHTML="";$("empty").textContent="Read hoyni: ei email admin noy ba rules thik nei.";$("empty").classList.remove("hide")}
+}
+const when=a=>a.createdAt?a.createdAt.toDate().toLocaleString("en-GB"):"-";
+function filt(){const t=$("ft").value,s=$("fs").value,q=$("q").value.toLowerCase();
+  return all.filter(a=>(!t||a.type===t)&&(!s||a.status===s)&&(!q||(a.name+a.phone).toLowerCase().includes(q)))}
+function render(){
+  const l=filt(),tb=$("rows");tb.innerHTML="";$("empty").classList.toggle("hide",l.length>0);
+  l.forEach(a=>{const tr=document.createElement("tr");tr.className="r";
+    [when(a),a.type,a.name,a.phone].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td)});
+    const td=document.createElement("td"),sp=document.createElement("span");sp.className="tag "+a.status;sp.textContent=a.status;td.appendChild(sp);tr.appendChild(td);
+    tr.onclick=()=>detail(a);tb.appendChild(tr)})}
+["ft","fs","q"].forEach(i=>$(i).oninput=render);
+function detail(a){
+  const d=$("det");d.classList.remove("hide");d.innerHTML="";
+  const h=document.createElement("h2");h.textContent=a.title+" | ID: "+a.id;d.appendChild(h);
+  const dl=document.createElement("dl");
+  const rows=[["Nam",a.name],["Mobile",a.phone],["Email",a.email||"-"],...Object.entries(a.fields||{}),["Shomoy",when(a)],["Hash (SHA-256)",a.hash],["Device",a.ua||"-"]];
+  rows.forEach(([k,v])=>{const dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=k;dd.textContent=v;dl.append(dt,dd)});
+  d.appendChild(dl);
+  const im=document.createElement("img");im.className="sig";im.src=a.sig;im.alt="Signature";d.appendChild(im);
+  const b=document.createElement("div");b.className="bar noprint";b.style.marginTop="12px";
+  [["approved","Approve"],["rejected","Reject"]].forEach(([s,t])=>{const x=document.createElement("button");x.textContent=t;
+    x.onclick=async()=>{await updateDoc(doc(db,"agreements",a.id),{status:s});a.status=s;render();detail(a)};b.appendChild(x)});
+  const p=document.createElement("button");p.className="sec";p.textContent="Print / PDF";p.onclick=()=>print();b.appendChild(p);
+  d.appendChild(b);d.scrollIntoView({behavior:"smooth"})}
+$("csv").onclick=()=>{
+  const e=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
+  const l=[["id","time","type","name","phone","email","status","fields","hash"].join(",")].concat(filt().map(a=>[a.id,when(a),a.type,a.name,a.phone,a.email,a.status,JSON.stringify(a.fields||{}),a.hash].map(e).join(",")));
+  const u=URL.createObjectURL(new Blob(["\ufeff"+l.join("\n")],{type:"text/csv"}));
+  const x=document.createElement("a");x.href=u;x.download="agreements.csv";x.click()};
+</script></body></html>

@@ -1,162 +1,278 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agreement | SNK</title>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
+<title>SNK Agreement</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Hind+Siliguri:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#EEF3F1;--ink:#17201E;--mute:#5B6B67;--teal:#0F4C45;--gold:#E3A008;--line:#CBD8D4;--err:#B3261E}
+:root{--bg:#F1F5F3;--ink:#16201E;--mute:#5B6B67;--teal:#0F4C45;--teal2:#14695F;--gold:#E3A008;--line:#D3DFDB;--err:#B3261E;--r:16px}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Hind Siliguri",system-ui,sans-serif}
-header{background:var(--teal);color:#fff;padding:16px 20px;font:800 20px "Bricolage Grotesque",sans-serif}
-main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
-h1,h2{font-family:"Bricolage Grotesque",sans-serif;margin:0 0 10px}h1{font-size:28px}h2{font-size:19px;margin-top:16px}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
-.pick{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:560px){.pick,.row{grid-template-columns:1fr!important}}
-.pick button{background:#fff;border:2px solid var(--teal);text-align:left;padding:18px;border-radius:14px;cursor:pointer;font:inherit}
-.pick button:hover{background:#F2F8F6}.pick b{display:block;font:800 20px "Bricolage Grotesque",sans-serif;color:var(--teal)}
-.terms{max-height:46vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#FAFCFB}
-.terms ol{padding-left:20px;margin:0}.terms li{margin-bottom:10px}
-.ayat{border-left:4px solid var(--gold);padding:4px 12px;margin:8px 0;background:#FFF9E8;font-size:15px}
-label{display:block;font-weight:600;margin:12px 0 4px}
-input,textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
-:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+html[lang=en] body{font-family:"Hind Siliguri",system-ui,sans-serif}
+html[lang=bn] body{font-family:"Hind Siliguri",system-ui,sans-serif}
+html[lang=ur] body{font-family:"Noto Naskh Arabic","Hind Siliguri",serif;line-height:2}
+body{margin:0;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65}
+h1,h2,h3{font-family:"Bricolage Grotesque","Hind Siliguri","Noto Naskh Arabic",sans-serif;margin:0 0 10px}
+header{position:sticky;top:0;z-index:5;background:var(--teal);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:0 2px 10px #0003}
+.brand{display:flex;align-items:center;gap:10px;font:800 19px "Bricolage Grotesque",sans-serif}
+.brand i{width:34px;height:34px;border-radius:10px;background:var(--gold);color:#3A2A00;display:grid;place-items:center;font-style:normal;font-weight:800}
+.lg{display:flex;background:#ffffff22;border-radius:99px;padding:3px}
+.lg button{background:none;color:#fff;border:0;padding:6px 12px;border-radius:99px;font:600 14px inherit;font-family:inherit;cursor:pointer}
+.lg button.on{background:#fff;color:var(--teal)}
+.hero{background:radial-gradient(900px 300px at 80% -20%,#1d8a7c55,transparent),linear-gradient(160deg,var(--teal),#0A332E);color:#fff;padding:44px 18px 70px;text-align:center}
+.hero h1{font-size:clamp(26px,5vw,40px);max-width:680px;margin:0 auto 12px;line-height:1.25}
+.hero p{max-width:560px;margin:0 auto 18px;opacity:.9}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.chips span{background:#ffffff1f;border:1px solid #ffffff33;padding:5px 14px;border-radius:99px;font-size:14px}
+main{max-width:780px;margin:0 auto;padding:0 16px 60px}
+#home{margin-top:-44px}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.pick,.row{grid-template-columns:1fr!important}}
+.opt{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;text-align:start;cursor:pointer;font:inherit;color:inherit;box-shadow:0 8px 24px #0f4c4514;transition:.18s}
+.opt:hover{transform:translateY(-3px);border-color:var(--teal2);box-shadow:0 14px 30px #0f4c4526}
+.opt svg{width:44px;height:44px;padding:10px;border-radius:12px;background:#E3F1EE;color:var(--teal);margin-bottom:12px}
+.opt b{display:block;font:800 20px "Bricolage Grotesque","Hind Siliguri","Noto Naskh Arabic",sans-serif;color:var(--teal)}
+.opt span{color:var(--mute);display:block;margin:4px 0 12px}.opt em{font-style:normal;font-weight:700;color:var(--teal2)}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:0 8px 24px #0f4c4510}
+.stp{display:flex;list-style:none;padding:0;margin:22px 0 16px;gap:6px}
+.stp li{flex:1;text-align:center;font-size:13px;color:var(--mute);position:relative}
+.stp li b{display:grid;place-items:center;width:30px;height:30px;margin:0 auto 4px;border-radius:50%;background:#fff;border:2px solid var(--line);font-size:14px}
+.stp li.on{color:var(--teal);font-weight:700}.stp li.on b{background:var(--gold);border-color:var(--gold);color:#3A2A00}
+.stp li.ok b{background:var(--teal);border-color:var(--teal);color:#fff}
+.terms{max-height:50vh;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:16px 20px;background:#FAFCFB}
+.terms ol{padding-inline-start:22px;margin:0}.terms li{margin-bottom:10px}
+.ayat{border-inline-start:4px solid var(--gold);padding:6px 12px;margin:8px 0;background:#FFF8E3;border-radius:0 8px 8px 0;font-size:15px}
+html[dir=rtl] .ayat{border-radius:8px 0 0 8px}
+.ayat b{color:#7A5600}
+label{display:block;font-weight:600;margin:14px 0 4px}
+input{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;background:#fff}
+input:focus{border-color:var(--teal2)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-button{font:600 16px inherit;font-family:inherit;border:0;border-radius:10px;padding:13px 22px;cursor:pointer}
-.pri{background:var(--teal);color:#fff}.pri:disabled{opacity:.4;cursor:not-allowed}.sec{background:#E1EAE7;color:var(--ink)}
-.bar{display:flex;gap:10px;justify-content:space-between;margin-top:18px;flex-wrap:wrap}
-.chk{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-weight:600}.chk input{width:22px;height:22px;margin-top:3px}
-canvas{width:100%;height:220px;border:2px dashed var(--teal);border-radius:10px;background:#fff;touch-action:none;display:block}
-.err{color:var(--err);font-size:14px;min-height:20px;margin-top:8px}
-.hide{display:none}
-.sum{width:100%;border-collapse:collapse}.sum td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}.sum td:first-child{color:var(--mute);width:36%}
-.sig{max-width:280px;border:1px solid var(--line);border-radius:8px}
-.done{background:#E6F4EA;border:1px solid #9BD3A8;border-radius:10px;padding:12px;margin-bottom:14px}
-.back{background:none;color:var(--teal);padding:0 0 10px;text-decoration:underline}
-@media print{header,.bar,.noprint{display:none!important}body{background:#fff}.card{border:0}}
+button{font:600 16px inherit;font-family:inherit;border:0;border-radius:12px;padding:13px 24px;cursor:pointer}
+.pri{background:var(--teal);color:#fff}.pri:hover:not(:disabled){background:var(--teal2)}.pri:disabled{opacity:.4;cursor:not-allowed}
+.sec{background:#E3EDEA;color:var(--ink)}.link{background:none;color:var(--teal);padding:0 0 10px;text-decoration:underline}
+.bar{display:flex;gap:10px;justify-content:space-between;margin-top:20px;flex-wrap:wrap}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-weight:600;cursor:pointer}.chk input{width:22px;height:22px;margin-top:5px;accent-color:var(--teal)}
+.padw{position:relative}
+.padw span{position:absolute;inset:auto 0 46px 0;text-align:center;color:#B8C6C2;pointer-events:none;font-size:14px}
+.padw:after{content:"";position:absolute;inset-inline:18px;bottom:44px;border-top:1px solid var(--line)}
+canvas{width:100%;height:230px;border:2px dashed var(--teal2);border-radius:14px;background:#fff;touch-action:none;display:block;cursor:crosshair}
+.err{color:var(--err);font-size:14px;min-height:22px;margin-top:8px}
+.hide{display:none!important}
+.ok{width:64px;height:64px;border-radius:50%;background:#DDF3E4;color:#1E7B3C;display:grid;place-items:center;margin:0 auto 10px}
+.ok svg{width:34px;height:34px}
+.sum{width:100%;border-collapse:collapse;margin-top:10px}.sum td{padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}.sum td:first-child{color:var(--mute);width:38%}
+.sig{max-width:280px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.stamp{font-size:13px;color:var(--mute);word-break:break-all}
+@media print{header,.stp,.bar,.noprint,.hero{display:none!important}body{background:#fff}.card{border:0;box-shadow:none}}
 </style>
 </head>
 <body>
-<header>SNK Agreement</header>
-<main>
+<header>
+  <div class="brand"><i>S</i><span data-i="brand"></span></div>
+  <div class="lg" role="group" aria-label="Language"><button data-l="0">EN</button><button data-l="1">বাং</button><button data-l="2">اردو</button></div>
+</header>
 
-<!-- HOME -->
 <section id="home">
-  <h1>Kon agreement-ti korben?</h1>
-  <p>Shorto poRe, raji hole login kore sign korun. Shesh e agreement-er copy PDF hishebe rekhe nite parben.</p>
-  <div class="pick">
-    <button data-mode="client"><b>Client Order</b>Website/service order-er agreement</button>
-    <button data-mode="partner"><b>Partner</b>Partner/representative hishebe kaj korar agreement</button>
+  <div class="hero">
+    <h1 data-i="heroT"></h1><p data-i="heroS"></p>
+    <div class="chips"><span data-i="chip1"></span><span data-i="chip2"></span><span data-i="chip3"></span></div>
   </div>
+  <main>
+    <div class="pick">
+      <button class="opt" data-mode="client">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>
+        <b data-i="cT"></b><span data-i="cD"></span><em data-i="start"></em></button>
+      <button class="opt" data-mode="partner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5.2a3.2 3.2 0 0 1 0 6M18 14.4c1.8.7 3 2.5 3 5.6"/></svg>
+        <b data-i="pT"></b><span data-i="pD"></span><em data-i="start"></em></button>
+    </div>
+  </main>
 </section>
 
-<!-- TERMS -->
-<section id="terms-s" class="card hide">
-  <button class="back" id="b1">Home-e fire zan</button>
-  <h1 id="ttl"></h1>
-  <div class="terms" id="terms"></div>
-  <label class="chk"><input type="checkbox" id="agree"> Ami shob shorto poreechi, bujhechi ebong raji achi.</label>
-  <div class="bar"><span></span><button class="pri" id="n1" disabled>Raji, login-e zan</button></div>
-</section>
+<main id="flow" class="hide">
+  <ol class="stp" id="stp"><li><b>1</b><span data-i="st1"></span></li><li><b>2</b><span data-i="st2"></span></li><li><b>3</b><span data-i="st3"></span></li><li><b>4</b><span data-i="st4"></span></li></ol>
 
-<!-- LOGIN -->
-<section id="login" class="card hide">
-  <h1>Login</h1>
-  <p>Sign korar age nijer porichoy din.</p>
-  <label for="name">Poorno nam</label><input id="name" autocomplete="name">
-  <div class="row">
-    <div><label for="phone">Mobile number</label><input id="phone" type="tel" autocomplete="tel"></div>
-    <div><label for="email">Email</label><input id="email" type="email" autocomplete="email"></div>
-  </div>
-  <div id="extra"></div>
-  <div class="err" id="e2"></div>
-  <div class="bar"><button class="sec" data-go="terms-s">Pechone</button><button class="pri" id="n2">Login korun</button></div>
-</section>
+  <section id="terms-s" class="card hide">
+    <button class="link" id="b1" data-i="home"></button>
+    <h2 id="ttl"></h2>
+    <div class="terms" id="terms"></div>
+    <label class="chk"><input type="checkbox" id="agree"><span data-i="agree"></span></label>
+    <div class="bar"><span></span><button class="pri" id="n1" disabled></button></div>
+  </section>
 
-<!-- SIGNING -->
-<section id="signing" class="card hide">
-  <h1>Signing</h1>
-  <p>Niche anguler ba touch pen diye sign korun.</p>
-  <canvas id="pad" aria-label="Signature pad"></canvas>
-  <div style="margin-top:8px"><button class="sec" id="clr">Muche felun</button></div>
-  <div class="err" id="e3"></div>
-  <div class="bar"><button class="sec" data-go="login">Pechone</button><button class="pri" id="n3">Sign shesh</button></div>
-</section>
+  <section id="login" class="card hide">
+    <h2 data-i="loginT"></h2><p data-i="loginS" style="color:var(--mute);margin:0"></p>
+    <label for="name" data-i="name"></label><input id="name" autocomplete="name">
+    <div class="row">
+      <div><label for="phone" data-i="phone"></label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr"></div>
+      <div><label for="email" data-i="email"></label><input id="email" type="email" autocomplete="email" dir="ltr"></div>
+    </div>
+    <div id="extra"></div>
+    <div class="err" id="e2"></div>
+    <div class="bar"><button class="sec" data-go="terms-s" data-i="back"></button><button class="pri" id="n2" data-i="loginBtn"></button></div>
+  </section>
 
-<!-- DONE -->
-<section id="done" class="card hide">
-  <div class="done noprint"><b>Agreement sompurno.</b> PDF copy rekhe din, ar WhatsApp-e pathiye confirm korun.</div>
-  <h1 id="dt"></h1>
-  <table class="sum" id="sum"></table>
-  <h2>Signature</h2><img id="sigOut" class="sig" alt="Signature">
-  <p style="font-size:13px;color:var(--mute)" id="stamp"></p>
-  <div class="bar noprint"><button class="sec" onclick="window.print()">PDF / Print</button><button class="pri" id="wa">WhatsApp-e confirm</button></div>
-</section>
+  <section id="signing" class="card hide">
+    <h2 data-i="signT"></h2><p data-i="signS" style="color:var(--mute);margin:0 0 12px"></p>
+    <div class="padw"><canvas id="pad" aria-label="Signature pad"></canvas><span data-i="signHint"></span></div>
+    <div style="margin-top:10px"><button class="sec" id="clr" data-i="clear"></button></div>
+    <div class="err" id="e3"></div>
+    <div class="bar"><button class="sec" data-go="login" data-i="back"></button><button class="pri" id="n3" data-i="signBtn"></button></div>
+  </section>
+
+  <section id="done" class="card hide">
+    <div class="ok noprint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h2 id="dt" style="text-align:center"></h2>
+    <p class="noprint" data-i="doneM" style="text-align:center;color:var(--mute);margin:0"></p>
+    <table class="sum" id="sum"></table>
+    <h3 style="margin-top:16px" data-i="sigL"></h3><img id="sigOut" class="sig" alt="">
+    <p class="stamp" id="stamp"></p>
+    <div class="bar noprint"><button class="sec" onclick="window.print()" data-i="print"></button><button class="pri" id="wa" data-i="wa"></button></div>
+  </section>
 </main>
 
 <script>
 // ===== SETTINGS =====
 const WHATSAPP = "8801XXXXXXXXX"; // country code shoho, + chara
+const COMMISSION = "XX%"; // partner commission-er har
 
-const Q = '<h2>Quran-er nirdesh (artho)</h2>'
- + '<div class="ayat">Al-Maidah 5:1 : Mumin-ra, tomra chukti puron koro.</div>'
- + '<div class="ayat">Al-Isra 17:34 : Oangikar puron koro; oangikar shomporke jiggasha kora hobe.</div>'
- + '<div class="ayat">Al-Baqarah 2:282 : Len-den likhe rakho ebong shakkhi rakho.</div>'
- + '<div class="ayat">An-Nisa 4:29 : Poroshpor shommotite byabsha koro.</div>'
- + '<p style="font-size:13px;color:var(--mute)">Publish-er age ayat quran.com theke ekbar miliye nin.</p>';
-const D = {
- client:{title:"Client Order Agreement",items:[
-  "<b>Service:</b> Je package nirbachon korben shudhu sheti-i deya hobe. Baire kaj alada charge.",
-  "<b>Mullo o payment:</b> Advance bKash/Nagad/Rocket-e diye Transaction ID dite hobe. Baki taka agreed shomoy-e.",
-  "<b>Delivery:</b> Agreed shomoy-er moddhe. Client tothho/logo deri korle shomoy bere zabe.",
-  "<b>Client-er daitto:</b> Shothik tothho o nijer adhikar-er content deya.",
-  "<b>Revision:</b> Package-e likha songkha porjonto free, tar por charge.",
-  "<b>Cancel o refund:</b> Kaj shuru-r age cancel hole advance-er ongsho ferot. Shuru hole toiri ongsher mullo kete baki ferot.",
-  "<b>Malikana:</b> Shompurno payment-er por website client-er.",
-  "<b>Gopon tothho:</b> Client-er tothho third party-ke deya hobe na.",
-  "<b>Support:</b> Delivery-r por package onujayi free support.",
-  "<b>Dayitto shimabaddhota:</b> Hosting, domain, payment gateway-er shomossha-r jonno dayi noy.",
-  "<b>Biroth nishpotti:</b> Age alochona, tarpor Bangladesher prochollito ain.",
-  "<b>Digital shommoti:</b> Digital signature ei agreement-er jonno gronoyogyo."],
-  fields:[["addr","Thikana / business-er nam"],["trx","Payment method o Transaction ID"]]},
- partner:{title:"Partner Agreement",items:[
-  "<b>Bhumika:</b> Partner SNK-er service-er proshar o client anar kaj korben. Partner SNK-er karmochari noy, shadhin shohojogi.",
-  "<b>Commission:</b> Commission-er har o payment-er shomoy agreed hishebe likhito thakbe. Client-er taka SNK-te jama hole-i commission pawa zabe.",
-  "<b>Shotota:</b> Mithya proti-shruti, vul tothho ba bhua offer deya zabe na. SNK-er nam-e nijer moto kono chukti kora zabe na.",
-  "<b>Client-er taka:</b> Client-er taka nijer kache rakha zabe na; shudhu SNK-er nirdharito payment number-e neya hobe.",
-  "<b>Gopon tothho:</b> Client o SNK-er tothho, mullo-talika ba kaj-er poddhoti onno keu-ke deya zabe na.",
-  "<b>Brand bebohar:</b> SNK-er logo o nam shudhu onumoti niye bebohar kora zabe.",
-  "<b>Shomapti:</b> Dui pokkher je keu agrim noticei-e shohojogita shesh korte pare. Chukti bhonge holey baki commission atkano zete pare.",
-  "<b>Dayitto:</b> Partner-er nijer kothay ba kaje SNK dayi noy.",
-  "<b>Biroth nishpotti:</b> Age alochona, tarpor Bangladesher prochollito ain.",
-  "<b>Digital shommoti:</b> Digital signature ei agreement-er jonno gronoyogyo."],
-  fields:[["addr","Thikana / elaka"],["payout","Commission paoar bKash/Nagad number"]]}
+const LC=["en","bn","ur"],LOC=["en-GB","bn-BD","ur-PK"];
+const S={
+brand:["SNK Agreement","SNK এগ্রিমেন্ট","SNK معاہدہ"],
+heroT:["Sign your agreement, simply and securely","সহজ ও নিরাপদে আপনার চুক্তি স্বাক্ষর করুন","اپنا معاہدہ آسانی اور محفوظ طریقے سے دستخط کریں"],
+heroS:["Read the terms, agree, log in and sign with your finger or touch pen. You get a PDF copy at the end.","শর্ত পড়ুন, সম্মত হোন, লগইন করে আঙুল বা টাচ পেন দিয়ে সই করুন। শেষে পিডিএফ কপি পাবেন।","شرائط پڑھیں، رضامندی دیں، لاگ اِن کریں اور انگلی یا ٹچ پین سے دستخط کریں۔ آخر میں پی ڈی ایف کاپی ملے گی۔"],
+chip1:["Quran-guided terms","কুরআনের নির্দেশনাসহ শর্ত","قرآنی رہنمائی پر مبنی شرائط"],
+chip2:["Digital signature","ডিজিটাল স্বাক্ষর","ڈیجیٹل دستخط"],
+chip3:["PDF copy","পিডিএফ কপি","پی ڈی ایف کاپی"],
+cT:["Client Order","ক্লায়েন্ট অর্ডার","کلائنٹ آرڈر"],
+cD:["Agreement for ordering a website or service","ওয়েবসাইট বা সার্ভিস অর্ডারের চুক্তি","ویب سائٹ یا سروس آرڈر کا معاہدہ"],
+pT:["Partner","পার্টনার","پارٹنر"],
+pD:["Agreement for working as a partner or representative","পার্টনার বা প্রতিনিধি হিসেবে কাজের চুক্তি","پارٹنر یا نمائندے کے طور پر کام کا معاہدہ"],
+start:["Start","শুরু করুন","شروع کریں"],
+st1:["Terms","শর্ত","شرائط"],st2:["Login","লগইন","لاگ اِن"],st3:["Sign","স্বাক্ষর","دستخط"],st4:["Done","সম্পন্ন","مکمل"],
+tC:["Client Order Agreement","ক্লায়েন্ট অর্ডার চুক্তি","کلائنٹ آرڈر معاہدہ"],
+tP:["Partner Agreement","পার্টনার চুক্তি","پارٹنر معاہدہ"],
+home:["Back to home","হোমে ফিরুন","ہوم پر واپس"],
+agree:["I have read, understood and agree to all the terms.","আমি সব শর্ত পড়েছি, বুঝেছি এবং সম্মত আছি।","میں نے تمام شرائط پڑھ لی ہیں، سمجھ لی ہیں اور متفق ہوں۔"],
+agreeBtn:["I agree, continue to login","সম্মত, লগইনে যান","متفق ہوں، لاگ اِن پر جائیں"],
+scrollMsg:["Scroll to the end of the terms first","আগে শর্তের শেষ পর্যন্ত স্ক্রল করুন","پہلے شرائط کے آخر تک اسکرول کریں"],
+quran:["Guidance from the Quran (meaning)","কুরআনের নির্দেশনা (অর্থ)","قرآن کی رہنمائی (مفہوم)"],
+loginT:["Login","লগইন","لاگ اِن"],
+loginS:["Enter your details before signing.","স্বাক্ষরের আগে আপনার পরিচয় দিন।","دستخط سے پہلے اپنی تفصیلات درج کریں۔"],
+name:["Full name","পুরো নাম","پورا نام"],phone:["Mobile number","মোবাইল নম্বর","موبائل نمبر"],email:["Email (optional)","ইমেইল (ঐচ্ছিক)","ای میل (اختیاری)"],
+addrC:["Address / business name","ঠিকানা / ব্যবসার নাম","پتہ / کاروبار کا نام"],
+addrP:["Address / area","ঠিকানা / এলাকা","پتہ / علاقہ"],
+trx:["Payment method & Transaction ID","পেমেন্ট মাধ্যম ও ট্রানজেকশন আইডি","ادائیگی کا طریقہ اور ٹرانزیکشن آئی ڈی"],
+payout:["bKash/Nagad number for commission","কমিশন পাওয়ার bKash/Nagad নম্বর","کمیشن کے لیے bKash/Nagad نمبر"],
+wname:["Witness full name","সাক্ষীর পুরো নাম","گواہ کا پورا نام"],
+wphone:["Witness mobile number","সাক্ষীর মোবাইল নম্বর","گواہ کا موبائل نمبر"],
+back:["Back","পেছনে","واپس"],loginBtn:["Log in","লগইন করুন","لاگ اِن کریں"],
+signT:["Signing","স্বাক্ষর","دستخط"],
+signS:["Sign below with your finger, touch pen or mouse.","নিচে আঙুল, টাচ পেন বা মাউস দিয়ে সই করুন।","نیچے انگلی، ٹچ پین یا ماؤس سے دستخط کریں۔"],
+signHint:["Sign here","এখানে সই করুন","یہاں دستخط کریں"],
+clear:["Clear","মুছুন","صاف کریں"],signBtn:["Finish signing","স্বাক্ষর শেষ","دستخط مکمل"],
+saving:["Saving...","সংরক্ষণ হচ্ছে...","محفوظ ہو رہا ہے..."],
+doneM:["Keep a PDF copy and confirm on WhatsApp.","পিডিএফ কপি রেখে দিন এবং হোয়াটসঅ্যাপে নিশ্চিত করুন।","پی ڈی ایف کاپی رکھیں اور واٹس ایپ پر تصدیق کریں۔"],
+print:["PDF / Print","পিডিএফ / প্রিন্ট","پی ڈی ایف / پرنٹ"],
+wa:["Confirm on WhatsApp","হোয়াটসঅ্যাপে নিশ্চিত করুন","واٹس ایپ پر تصدیق کریں"],
+sigL:["Signature","স্বাক্ষর","دستخط"],idL:["Agreement ID","চুক্তি আইডি","معاہدہ آئی ڈی"],timeL:["Time","সময়","وقت"],
+eName:["Enter your full name.","পুরো নাম লিখুন।","پورا نام لکھیں۔"],
+ePhone:["Enter a valid mobile number.","সঠিক মোবাইল নম্বর দিন।","درست موبائل نمبر درج کریں۔"],
+eMail:["Email looks invalid.","ইমেইল সঠিক নয়।","ای میل درست نہیں۔"],
+eReq:["Please fill all fields.","সব ঘর পূরণ করুন।","تمام خانے پُر کریں۔"],
+eSign:["Please sign first.","আগে সই করুন।","پہلے دستخط کریں۔"],
+eSave:["Could not save. Check internet and retry.","সংরক্ষণ হয়নি, ইন্টারনেট দেখে আবার চেষ্টা করুন।","محفوظ نہیں ہو سکا، انٹرنیٹ دیکھ کر دوبارہ کوشش کریں۔"]
 };
-const $=id=>document.getElementById(id);
-let mode="client",signed=false,read=false;
-function show(id){["home","terms-s","login","signing","done"].forEach(s=>$(s).classList.toggle("hide",s!==id));window.scrollTo({top:0});if(id==="signing")size()}
+// Quran verses (meaning only) - publish-er age quran.com theke miliye nin
+const AY={
+a:["5:1",["Believers, fulfil your contracts.","হে মুমিনগণ, তোমরা চুক্তিসমূহ পূর্ণ করো।","اے ایمان والو! اپنے عہد و پیمان پورے کرو۔"]],
+b:["17:34",["Fulfil the covenant; the covenant will be questioned.","অঙ্গীকার পূর্ণ করো; অঙ্গীকার সম্পর্কে জিজ্ঞাসা করা হবে।","عہد پورا کرو، بے شک عہد کے بارے میں پوچھا جائے گا۔"]],
+c:["2:282",["Write down your dealings and have witnesses.","লেনদেন লিখে রাখো এবং সাক্ষী রাখো।","لین دین لکھ لیا کرو اور گواہ بنا لو۔"]],
+d:["4:29",["Trade by mutual consent; do not consume wealth unjustly.","পারস্পরিক সম্মতিতে ব্যবসা করো; অন্যায়ভাবে সম্পদ গ্রাস করো না।","باہمی رضامندی سے تجارت کرو؛ ناحق مال نہ کھاؤ۔"]],
+e:["8:27",["Do not betray trusts knowingly.","জেনেশুনে আমানতে খিয়ানত করো না।","جان بوجھ کر امانتوں میں خیانت نہ کرو۔"]],
+f:["4:58",["Return trusts to their owners.","আমানত তার প্রাপককে ফেরত দাও।","امانتیں ان کے حقداروں کو لوٹا دو۔"]],
+g:["83:1-3",["Woe to those who give less in measure and weight (cheating is forbidden).","যারা মাপে কম দেয় তাদের জন্য ধ্বংস (প্রতারণা নিষিদ্ধ)।","کم ناپنے اور کم تولنے والوں کے لیے ہلاکت ہے (دھوکہ حرام ہے)۔"]]};
+const TC=[
+["<b>Service:</b> Only the selected package is delivered; extra work is charged separately.","<b>সার্ভিস:</b> নির্বাচিত প্যাকেজের কাজই করা হবে; অতিরিক্ত কাজের জন্য আলাদা চার্জ প্রযোজ্য।","<b>سروس:</b> صرف منتخب کردہ پیکیج کا کام کیا جائے گا؛ اضافی کام کا الگ چارج ہوگا۔"],
+["<b>Payment:</b> Advance via bKash/Nagad/Rocket with the Transaction ID; balance at the agreed time.","<b>পেমেন্ট:</b> অগ্রিম bKash/Nagad/Rocket-এ ট্রানজেকশন আইডিসহ দিতে হবে; বাকি টাকা নির্ধারিত সময়ে।","<b>ادائیگی:</b> ایڈوانس bKash/Nagad/Rocket کے ذریعے ٹرانزیکشن آئی ڈی کے ساتھ دیں؛ باقی رقم طے شدہ وقت پر۔"],
+["<b>Delivery:</b> Within the agreed time; delays in client content extend the timeline.","<b>ডেলিভারি:</b> নির্ধারিত সময়ের মধ্যে; ক্লায়েন্টের কনটেন্ট দিতে দেরি হলে সময় বাড়বে।","<b>ڈیلیوری:</b> طے شدہ مدت میں؛ کلائنٹ کے مواد میں تاخیر سے مدت بڑھ جائے گی۔"],
+["<b>Client duty:</b> Provide accurate information and content you have the right to use.","<b>ক্লায়েন্টের দায়িত্ব:</b> সঠিক তথ্য এবং নিজের ব্যবহারের অধিকার আছে এমন কনটেন্ট দিতে হবে।","<b>کلائنٹ کی ذمہ داری:</b> درست معلومات اور ایسا مواد دیں جس کے استعمال کا آپ کو حق ہو۔"],
+["<b>Revisions:</b> Free up to the number stated in the package; more are charged.","<b>রিভিশন:</b> প্যাকেজে উল্লিখিত সংখ্যক রিভিশন বিনামূল্যে; এর বেশি হলে চার্জ।","<b>ترمیم:</b> پیکیج میں درج تعداد تک مفت؛ اس سے زیادہ پر چارج۔"],
+["<b>Cancel & refund:</b> Before work starts, part of the advance is refunded; after it starts, the value of completed work is deducted.","<b>বাতিল ও ফেরত:</b> কাজ শুরুর আগে বাতিল করলে অগ্রিমের একটি অংশ ফেরত; শুরু হলে সম্পন্ন কাজের মূল্য কেটে বাকি ফেরত।","<b>منسوخی اور رقم واپسی:</b> کام شروع ہونے سے پہلے ایڈوانس کا کچھ حصہ واپس؛ شروع ہونے کے بعد مکمل کام کی قیمت کاٹ کر باقی واپس۔"],
+["<b>Ownership:</b> After full payment the website belongs to the client.","<b>মালিকানা:</b> সম্পূর্ণ পেমেন্টের পর ওয়েবসাইটের মালিক ক্লায়েন্ট।","<b>ملکیت:</b> مکمل ادائیگی کے بعد ویب سائٹ کلائنٹ کی ہوگی۔"],
+["<b>Privacy:</b> Client information is not shared with third parties.","<b>গোপনীয়তা:</b> ক্লায়েন্টের তথ্য তৃতীয় পক্ষকে দেওয়া হবে না।","<b>رازداری:</b> کلائنٹ کی معلومات کسی تیسرے فریق کو نہیں دی جائیں گی۔"],
+["<b>Support:</b> Free support after delivery as per the package.","<b>সাপোর্ট:</b> ডেলিভারির পর প্যাকেজ অনুযায়ী বিনামূল্যে সাপোর্ট।","<b>سپورٹ:</b> ڈیلیوری کے بعد پیکیج کے مطابق مفت سپورٹ۔"],
+["<b>Liability:</b> We are not liable for third-party problems (hosting, domain, payment gateway).","<b>দায়সীমা:</b> হোস্টিং, ডোমেইন বা পেমেন্ট গেটওয়ের মতো তৃতীয় পক্ষের সমস্যার দায় নেই।","<b>ذمہ داری کی حد:</b> ہوسٹنگ، ڈومین یا پیمنٹ گیٹ وے جیسے تیسرے فریق کے مسائل کی ذمہ داری نہیں۔"],
+["<b>Disputes:</b> Discussion first; otherwise under the prevailing law of Bangladesh.","<b>বিরোধ:</b> আগে আলোচনা; না হলে বাংলাদেশের প্রচলিত আইন অনুযায়ী নিষ্পত্তি।","<b>تنازعہ:</b> پہلے بات چیت؛ ورنہ بنگلہ دیش کے رائج قانون کے مطابق فیصلہ۔"],
+["<b>Digital consent:</b> A digital signature is valid for this agreement.","<b>ডিজিটাল সম্মতি:</b> ডিজিটাল স্বাক্ষর এই চুক্তির জন্য গ্রহণযোগ্য।","<b>ڈیجیٹل رضامندی:</b> ڈیجیٹل دستخط اس معاہدے کے لیے قابلِ قبول ہیں۔"]];
+const TP=[
+["<b>Relationship:</b> The partner is an independent associate, not an employee, and has no authority to bind SNK or promise anything on its behalf.","<b>সম্পর্ক:</b> পার্টনার স্বাধীন সহযোগী, কর্মচারী নন; SNK-এর পক্ষে কোনো চুক্তি বা প্রতিশ্রুতি দেওয়ার ক্ষমতা নেই।","<b>تعلق:</b> پارٹنر آزاد معاون ہے، ملازم نہیں؛ SNK کی طرف سے کوئی معاہدہ یا وعدہ کرنے کا اختیار نہیں۔"],
+["<b>Commission:</b> The rate is {C}. It is earned only after the client's full payment reaches SNK's designated account, and is paid on SNK's schedule to the partner's number.","<b>কমিশন:</b> হার {C}। ক্লায়েন্টের সম্পূর্ণ টাকা SNK-এর নির্ধারিত অ্যাকাউন্টে জমা হলেই কমিশন প্রাপ্য; SNK-এর নির্ধারিত সময়ে পার্টনারের নম্বরে দেওয়া হবে।","<b>کمیشن:</b> شرح {C}۔ کلائنٹ کی مکمل رقم SNK کے مقررہ اکاؤنٹ میں جمع ہونے پر ہی کمیشن واجب ہوگا؛ SNK کے مقررہ وقت پر پارٹنر کے نمبر پر ادا ہوگا۔"],
+["<b>Clawback:</b> If an order is cancelled, refunded or its payment fails, that commission is void; any amount already paid must be returned or will be deducted from future payouts.","<b>কমিশন ফেরত:</b> অর্ডার বাতিল, ফেরত বা পেমেন্ট ব্যর্থ হলে সেই কমিশন বাতিল; ইতিমধ্যে দেওয়া হলে ফেরত দিতে হবে বা পরবর্তী পাওনা থেকে কাটা হবে।","<b>کمیشن کی واپسی:</b> آرڈر منسوخ، رقم واپس یا ادائیگی ناکام ہونے پر اس کا کمیشن کالعدم ہوگا؛ پہلے ادا ہو چکا ہو تو واپس کرنا ہوگا یا آئندہ واجبات سے کاٹ لیا جائے گا۔"],
+["<b>Honesty:</b> No false information, fake offers or promises beyond SNK's actual services. The partner is liable for any loss caused.","<b>সততা:</b> মিথ্যা তথ্য, ভুয়া অফার বা SNK-এর সার্ভিসের বাইরে প্রতিশ্রুতি দেওয়া নিষিদ্ধ; এর ফলে ক্ষতি হলে পার্টনার দায়ী।","<b>سچائی:</b> جھوٹی معلومات، جعلی پیشکش یا SNK کی سروسز سے باہر وعدے ممنوع ہیں؛ نقصان کی صورت میں پارٹنر ذمہ دار ہوگا۔"],
+["<b>Client money (amanah):</b> Never keep or collect a client's money yourself; take it only on SNK's designated payment number. A violation is a breach of trust: full refund, damages and legal action.","<b>ক্লায়েন্টের টাকা (আমানত):</b> ক্লায়েন্টের টাকা নিজের কাছে রাখা বা নেওয়া যাবে না; শুধু SNK-এর নির্ধারিত পেমেন্ট নম্বরে নিতে হবে। লঙ্ঘন আমানতে খিয়ানত: সম্পূর্ণ টাকা ফেরত, ক্ষতিপূরণ ও আইনগত ব্যবস্থা।","<b>کلائنٹ کی رقم (امانت):</b> کلائنٹ کی رقم خود وصول کرنا یا رکھنا ممنوع ہے؛ صرف SNK کے مقررہ ادائیگی نمبر پر لیں۔ خلاف ورزی امانت میں خیانت ہے: پوری رقم واپس، ہرجانہ اور قانونی کارروائی۔"],
+["<b>Confidentiality:</b> Client data, price lists, methods and SNK business information must not be disclosed to anyone during the agreement and for 2 years after.","<b>গোপনীয়তা:</b> ক্লায়েন্টের তথ্য, মূল্যতালিকা, কাজের পদ্ধতি ও SNK-এর ব্যবসায়িক তথ্য চুক্তির সময় এবং শেষ হওয়ার পর ২ বছর কাউকে জানানো যাবে না।","<b>رازداری:</b> کلائنٹ کا ڈیٹا، قیمتوں کی فہرست، طریقۂ کار اور SNK کی کاروباری معلومات معاہدے کے دوران اور ختم ہونے کے بعد 2 سال تک کسی کو نہ بتائی جائیں۔"],
+["<b>No poaching clients:</b> During the agreement and for 12 months after, do not offer SNK's clients the same services directly or for another company, bypassing SNK.","<b>ক্লায়েন্ট ভাঙানো নিষিদ্ধ:</b> চুক্তির সময় এবং শেষ হওয়ার পর ১২ মাস SNK-কে বাদ দিয়ে সরাসরি বা অন্য প্রতিষ্ঠানের হয়ে SNK-এর ক্লায়েন্টকে একই সার্ভিস দেওয়া যাবে না।","<b>کلائنٹ توڑنے کی ممانعت:</b> معاہدے کے دوران اور ختم ہونے کے بعد 12 ماہ تک SNK کو نظرانداز کر کے براہِ راست یا کسی اور ادارے کے لیے SNK کے کلائنٹ کو وہی سروس نہیں دی جا سکتی۔"],
+["<b>No competing:</b> While this agreement runs, do not sell similar services to the same client on behalf of a competitor of SNK.","<b>প্রতিযোগিতা নিষিদ্ধ:</b> চুক্তি চলাকালে SNK-এর প্রতিদ্বন্দ্বী প্রতিষ্ঠানের হয়ে একই ক্লায়েন্টের কাছে অনুরূপ সার্ভিস বিক্রি করা যাবে না।","<b>مقابلے کی ممانعت:</b> معاہدے کے دوران SNK کے حریف ادارے کی طرف سے اسی کلائنٹ کو ملتی جلتی سروس فروخت نہیں کی جا سکتی۔"],
+["<b>Brand:</b> SNK's name, logo, designs and content may be used only with written permission; otherwise damages are payable.","<b>ব্র্যান্ড:</b> SNK-এর নাম, লোগো, ডিজাইন ও কনটেন্ট লিখিত অনুমতি ছাড়া ব্যবহার করা যাবে না; করলে ক্ষতিপূরণ দিতে হবে।","<b>برانڈ:</b> SNK کا نام، لوگو، ڈیزائن اور مواد تحریری اجازت کے بغیر استعمال نہیں ہو سکتا؛ ورنہ ہرجانہ ادا کرنا ہوگا۔"],
+["<b>Lawful conduct:</b> No spam, fraud, false advertising or illegal acts. Legal responsibility for them is the partner's alone.","<b>আইন মানা:</b> স্প্যাম, প্রতারণা, ভুয়া বিজ্ঞাপন বা অবৈধ কাজ নিষিদ্ধ; এর আইনগত দায় শুধু পার্টনারের।","<b>قانون کی پابندی:</b> سپیم، فراڈ، جھوٹی تشہیر یا غیر قانونی کام ممنوع ہیں؛ ان کی قانونی ذمہ داری صرف پارٹنر کی ہے۔"],
+["<b>Damages:</b> If the partner breaches these terms and SNK or a client suffers loss, the partner must compensate it, and SNK may withhold unpaid commission.","<b>ক্ষতিপূরণ:</b> পার্টনারের শর্ত ভঙ্গে SNK বা ক্লায়েন্টের ক্ষতি হলে পার্টনার ক্ষতিপূরণ দিতে বাধ্য; SNK বাকি কমিশন আটকে রাখতে পারবে।","<b>ہرجانہ:</b> پارٹنر کی شرائط شکنی سے SNK یا کلائنٹ کو نقصان ہو تو پارٹنر تلافی کا پابند ہے؛ SNK بقایا کمیشن روک سکتا ہے۔"],
+["<b>Termination:</b> Either side may end this with 15 days' written notice; SNK may end it immediately for breach. The clauses on clawback, confidentiality, no poaching, brand and damages survive termination.","<b>সমাপ্তি:</b> যেকোনো পক্ষ ১৫ দিনের লিখিত নোটিসে চুক্তি শেষ করতে পারবে; শর্তভঙ্গে SNK তাৎক্ষণিক শেষ করতে পারবে। কমিশন ফেরত, গোপনীয়তা, ক্লায়েন্ট ভাঙানো নিষেধ, ব্র্যান্ড ও ক্ষতিপূরণের ধারা চুক্তি শেষের পরও বলবৎ থাকবে।","<b>خاتمہ:</b> کوئی بھی فریق 15 دن کے تحریری نوٹس پر معاہدہ ختم کر سکتا ہے؛ شرائط شکنی پر SNK فوری ختم کر سکتا ہے۔ کمیشن کی واپسی، رازداری، کلائنٹ توڑنے کی ممانعت، برانڈ اور ہرجانے کی دفعات خاتمے کے بعد بھی نافذ رہیں گی۔"],
+["<b>Evidence & witness:</b> This agreement is digitally signed; the time, signature and a hash are stored by SNK and count as evidence. The partner names an adult witness.","<b>প্রমাণ ও সাক্ষী:</b> চুক্তিটি ডিজিটালি স্বাক্ষরিত; সময়, স্বাক্ষর ও হ্যাশ SNK-এর সিস্টেমে সংরক্ষিত থাকবে এবং প্রমাণ হিসেবে গণ্য হবে। পার্টনারকে একজন প্রাপ্তবয়স্ক সাক্ষীর নাম দিতে হবে।","<b>ثبوت اور گواہ:</b> یہ معاہدہ ڈیجیٹل دستخط سے ہے؛ وقت، دستخط اور ہیش SNK کے سسٹم میں محفوظ رہیں گے اور ثبوت مانے جائیں گے۔ پارٹنر ایک بالغ گواہ کا نام دے گا۔"],
+["<b>Disputes:</b> First discussion and mediation; otherwise the competent court in Dhaka under the laws of Bangladesh.","<b>বিরোধ:</b> প্রথমে আলোচনা ও মধ্যস্থতা; না হলে বাংলাদেশের আইন অনুযায়ী ঢাকার এখতিয়ারসম্পন্ন আদালতে নিষ্পত্তি।","<b>تنازعہ:</b> پہلے بات چیت اور ثالثی؛ ورنہ بنگلہ دیش کے قانون کے مطابق ڈھاکہ کی مجاز عدالت میں فیصلہ۔"],
+["<b>Entire agreement & digital consent:</b> This is the whole agreement; changes need written consent of both sides. The partner accepts the digital signature and signs willingly, knowing what it says.","<b>সম্পূর্ণ চুক্তি ও ডিজিটাল সম্মতি:</b> এটিই সম্পূর্ণ চুক্তি; পরিবর্তনে উভয় পক্ষের লিখিত সম্মতি লাগবে। পার্টনার ডিজিটাল স্বাক্ষর মেনে নিচ্ছেন এবং স্বেচ্ছায় ও বুঝে সই করছেন।","<b>مکمل معاہدہ اور ڈیجیٹل رضامندی:</b> یہی مکمل معاہدہ ہے؛ تبدیلی کے لیے دونوں فریقوں کی تحریری رضامندی ضروری ہے۔ پارٹنر ڈیجیٹل دستخط کو تسلیم کرتا ہے اور اپنی مرضی سے، سمجھ کر دستخط کر رہا ہے۔"]];
+const D={
+ client:{t:"tC",items:TC,ay:"abcd",fields:[["addr","addrC"],["trx","trx"]]},
+ partner:{t:"tP",items:TP,ay:"abcdefg",fields:[["addr","addrP"],["payout","payout","tel"],["wname","wname"],["wphone","wphone","tel"]]}};
+
+const $=id=>document.getElementById(id), t=k=>S[k][l];
+let l=0,mode=null,signed=false,read=false,agId="",cur="home",res=null;
+try{l=+(localStorage.getItem("lg")||0)}catch(e){}
+
+function applyLang(){
+  document.documentElement.lang=LC[l];document.documentElement.dir=l==2?"rtl":"ltr";document.title=t("brand");
+  document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t(e.dataset.i));
+  document.querySelectorAll(".lg button").forEach((b,i)=>b.classList.toggle("on",i==l));
+  if(mode){renderTerms();renderExtra()}
+  upd();if(res)renderDone();
+  try{localStorage.setItem("lg",l)}catch(e){}
+}
+document.querySelectorAll(".lg button").forEach(b=>b.onclick=()=>{l=+b.dataset.l;applyLang()});
+function renderTerms(){
+  const d=D[mode];$("ttl").textContent=t(d.t);
+  $("terms").innerHTML="<ol>"+d.items.map(i=>"<li>"+i[l].replace("{C}",COMMISSION)+"</li>").join("")+"</ol><h3>"+t("quran")+"</h3>"
+   +[...d.ay].map(k=>'<div class="ayat"><b>'+AY[k][0]+'</b> : '+AY[k][1][l]+"</div>").join("")}
+function renderExtra(){
+  const old={};document.querySelectorAll("#extra input").forEach(i=>old[i.id]=i.value);
+  $("extra").innerHTML=D[mode].fields.map(f=>'<label for="'+f[0]+'">'+t(f[1])+'</label><input id="'+f[0]+'"'+(f[2]?' type="tel" inputmode="tel" dir="ltr"':"")+">").join("");
+  for(const k in old)if($(k))$(k).value=old[k]}
+
+const STEP={home:0,"terms-s":1,login:2,signing:3,done:4};
+function show(id){
+  cur=id;["terms-s","login","signing","done"].forEach(s=>$(s).classList.toggle("hide",s!==id));
+  $("home").classList.toggle("hide",id!=="home");$("flow").classList.toggle("hide",id==="home");
+  const n=STEP[id];document.querySelectorAll("#stp li").forEach((li,i)=>{li.classList.toggle("on",i+1===n);li.classList.toggle("ok",i+1<n)});
+  window.scrollTo({top:0});if(id==="signing")size()}
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
 document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{
-  mode=b.dataset.mode;const d=D[mode];$("ttl").textContent=d.title;
-  $("terms").innerHTML="<ol>"+d.items.map(i=>"<li>"+i+"</li>").join("")+"</ol>"+Q;
-  $("extra").innerHTML=d.fields.map(f=>'<label for="'+f[0]+'">'+f[1]+'</label><input id="'+f[0]+'">').join("");
-  read=false;$("agree").checked=false;upd();show("terms-s");$("terms").scrollTop=0});
+  mode=b.dataset.mode;res=null;read=false;$("agree").checked=false;renderTerms();renderExtra();upd();show("terms-s");$("terms").scrollTop=0;
+  if($("terms").scrollHeight<=$("terms").clientHeight+8){read=true;upd()}});
 $("b1").onclick=()=>show("home");
-$("terms").addEventListener("scroll",()=>{const t=$("terms");if(t.scrollTop+t.clientHeight>=t.scrollHeight-8){read=true;upd()}});
+$("terms").addEventListener("scroll",()=>{const e=$("terms");if(e.scrollTop+e.clientHeight>=e.scrollHeight-8){read=true;upd()}});
 $("agree").onchange=upd;
-function upd(){const ok=$("agree").checked&&read;$("n1").disabled=!ok;$("n1").textContent=$("agree").checked&&!read?"Age shesh porjonto scroll korun":"Raji, login-e zan"}
+function upd(){$("n1").disabled=!($("agree").checked&&read);$("n1").textContent=$("agree").checked&&!read?t("scrollMsg"):t("agreeBtn")}
 $("n1").onclick=()=>show("login");
 $("n2").onclick=()=>{
-  const p=$("phone").value.replace(/[\s-]/g,"");
-  if($("name").value.trim().length<3)return $("e2").textContent="Poorno nam likhun.";
-  if(!/^\+?\d{8,15}$/.test(p))return $("e2").textContent="Shothik mobile number din.";
-  if($("email").value&&!/^\S+@\S+\.\S+$/.test($("email").value))return $("e2").textContent="Email thik nei.";
-  for(const f of D[mode].fields)if($(f[0]).value.trim().length<3)return $("e2").textContent=f[1]+" din.";
+  const p=$("phone").value.replace(/[\s-]/g,""),E=k=>$("e2").textContent=t(k);
+  if($("name").value.trim().length<3)return E("eName");
+  if(!/^\+?\d{8,15}$/.test(p))return E("ePhone");
+  if($("email").value&&!/^\S+@\S+\.\S+$/.test($("email").value))return E("eMail");
+  for(const f of D[mode].fields)if($(f[0]).value.trim().length<3)return E("eReq");
   $("e2").textContent="";show("signing")};
 
-// Signature: finger, touch pen, mouse (pointer events; pen pressure varies line width)
+// Signature: finger, touch pen, mouse
 const pad=$("pad"),ctx=pad.getContext("2d");let down=false,last=null;
 function size(){const r=pad.getBoundingClientRect(),d=window.devicePixelRatio||1;
   if(pad.width===Math.round(r.width*d))return;pad.width=r.width*d;pad.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);
@@ -165,23 +281,41 @@ const P=e=>{const r=pad.getBoundingClientRect();return[e.clientX-r.left,e.client
 pad.addEventListener("pointerdown",e=>{e.preventDefault();down=true;pad.setPointerCapture(e.pointerId);last=P(e)});
 pad.addEventListener("pointermove",e=>{if(!down)return;const p=P(e);
   ctx.lineWidth=e.pointerType==="pen"&&e.pressure?1+e.pressure*3.5:2.6;
-  ctx.beginPath();ctx.moveTo(...last);ctx.lineTo(...p);ctx.stroke();last=p;signed=true});
-["pointerup","pointercancel"].forEach(t=>pad.addEventListener(t,()=>down=false));
-$("clr").onclick=()=>{ctx.clearRect(0,0,pad.width,pad.height);signed=false};
-$("n3").onclick=()=>{
-  if(!signed)return $("e3").textContent="Age sign korun.";$("e3").textContent="";
-  const d=D[mode],rows=[["Nam",$("name").value],["Mobile",$("phone").value],["Email",$("email").value||"-"]]
-    .concat(d.fields.map(f=>[f[1],$(f[0]).value]));
-  $("dt").textContent=d.title;
-  $("sum").innerHTML=rows.map(()=>"<tr><td></td><td></td></tr>").join("");
+  ctx.beginPath();ctx.moveTo(...last);ctx.lineTo(...p);ctx.stroke();last=p;signed=true;pad.nextElementSibling.style.display="none"});
+["pointerup","pointercancel"].forEach(x=>pad.addEventListener(x,()=>down=false));
+$("clr").onclick=()=>{ctx.clearRect(0,0,pad.width,pad.height);signed=false;pad.nextElementSibling.style.display=""};
+
+$("n3").onclick=async()=>{
+  if(!signed)return $("e3").textContent=t("eSign");$("e3").textContent="";
+  const d=D[mode],sig=pad.toDataURL("image/png"),fields={};d.fields.forEach(f=>fields[f[0]]=$(f[0]).value.trim());
+  const vals={name:$("name").value.trim(),phone:$("phone").value.trim(),email:$("email").value.trim()};
+  const raw=mode+$("terms").innerText+JSON.stringify([vals,fields,sig]);
+  const hash=[...new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(raw)))].map(b=>b.toString(16).padStart(2,"0")).join("");
+  $("n3").disabled=true;$("n3").textContent=t("saving");
+  try{if(window.saveAgreement)agId=await window.saveAgreement({type:mode,title:S[d.t][0],lang:LC[l],...vals,fields,sig,hash,status:"pending",ua:navigator.userAgent.slice(0,200)})}
+  catch(e){$("n3").disabled=false;$("n3").textContent=t("signBtn");return $("e3").textContent=t("eSave")}
+  $("n3").disabled=false;$("n3").textContent=t("signBtn");
+  res={vals,fields,sig,hash,time:new Date()};renderDone();show("done")};
+function renderDone(){
+  const d=D[mode],rows=[[t("name"),res.vals.name],[t("phone"),res.vals.phone],[t("email"),res.vals.email||"-"]].concat(d.fields.map(f=>[t(f[1]),res.fields[f[0]]]));
+  $("dt").textContent=t(d.t);$("sum").innerHTML=rows.map(()=>"<tr><td></td><td></td></tr>").join("");
   [...$("sum").rows].forEach((tr,i)=>{tr.cells[0].textContent=rows[i][0];tr.cells[1].textContent=rows[i][1]});
-  $("sigOut").src=pad.toDataURL("image/png");
-  $("stamp").textContent="Shomoy: "+new Date().toLocaleString("en-GB")+" | Shorto mene sign kora hoyeche.";
-  show("done")};
+  $("sigOut").src=res.sig;
+  $("stamp").textContent=t("idL")+": "+(agId||"-")+" | "+t("timeL")+": "+res.time.toLocaleString(LOC[l])+" | SHA-256: "+res.hash.slice(0,16)+"..."}
 $("wa").onclick=()=>{
-  const d=D[mode],t=[d.title,"Nam: "+$("name").value,"Mobile: "+$("phone").value,"Email: "+$("email").value]
-    .concat(d.fields.map(f=>f[1]+": "+$(f[0]).value)).concat(["Agreement: Agreed & signed "+new Date().toLocaleString("en-GB"),"(Signed PDF copy alada pathabo)"]).join("\n");
-  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(t),"_blank")};
+  const d=D[mode],v=res.vals,m=[S[d.t][0],"Name: "+v.name,"Mobile: "+v.phone,"Email: "+v.email].concat(d.fields.map(f=>S[f[1]][0]+": "+res.fields[f[0]])).concat(["Agreement ID: "+agId,"Agreed & signed: "+res.time.toLocaleString("en-GB")]).join("\n");
+  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(m),"_blank")};
+applyLang();
+</script>
+<script type="module">
+// ===== FIREBASE CONFIG: Firebase console > Project settings > Web app theke boshan =====
+const cfg={apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT",appId:"YOUR_APP_ID"};
+if(cfg.apiKey!=="YOUR_API_KEY"){
+  const {initializeApp}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+  const {getFirestore,collection,addDoc,serverTimestamp}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+  const db=getFirestore(initializeApp(cfg));
+  window.saveAgreement=async d=>(await addDoc(collection(db,"agreements"),{...d,createdAt:serverTimestamp()})).id;
+}
 </script>
 </body>
 </html>
