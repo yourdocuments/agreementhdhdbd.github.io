@@ -163,6 +163,7 @@ canvas{background:repeating-linear-gradient(#fff 0 31px,#EEF4F2 31px 32px);borde
       <div><label for="email" data-i="email"></label><input id="email" type="email" autocomplete="email" dir="ltr"></div>
     </div>
     <div id="extra"></div>
+    <label class="chk"><input type="checkbox" id="priv"><span id="privTxt"></span></label>
     <div class="err" id="e2"></div>
     <div class="bar"><button class="sec" data-go="terms-s" data-i="back"></button><button class="pri" id="n2" data-i="loginBtn"></button></div>
   </section>
@@ -242,6 +243,13 @@ eMail:["Enter a valid email.","সঠিক ইমেইল দিন।","در�
 eReq:["Please fill all fields.","সব ঘর পূরণ করুন।","تمام خانے پُر کریں۔"],
 eSign:["Please sign first.","আগে সই করুন।","پہلے دستخط کریں۔"],
 eSave:["Could not save. Check internet and retry.","সংরক্ষণ হয়নি, ইন্টারনেট দেখে আবার চেষ্টা করুন।","محفوظ نہیں ہو سکا، انٹرنیٹ دیکھ کر دوبارہ کوشش کریں۔"],
+pkg:["Package / service","প্যাকেজ / সার্ভিস","پیکیج / سروس"],
+total:["Total price (BDT)","মোট মূল্য (টাকা)","کل قیمت (ٹکا)"],
+advance:["Advance paid (BDT)","অগ্রিম দেওয়া (টাকা)","ادا کردہ ایڈوانس (ٹکا)"],
+due:["Delivery date","ডেলিভারির তারিখ","ڈیلیوری کی تاریخ"],
+eNum:["Check the amount fields (advance cannot exceed total).","টাকার ঘর দেখুন (অগ্রিম মোটের বেশি হতে পারে না)।","رقم کے خانے دیکھیں (ایڈوانس کل سے زیادہ نہیں ہو سکتا)۔"],
+ePriv:["Please accept the privacy notice.","গোপনীয়তা নোটিস গ্রহণ করুন।","رازداری کا نوٹس قبول کریں۔"],
+priv:["I understand SNK stores my name, mobile, email, signature and thumb impression only to keep this agreement and as proof in a dispute. I can ask for a copy or deletion by emailing {E}, unless the record is needed as legal proof.","আমি জানি SNK আমার নাম, মোবাইল, ইমেইল, স্বাক্ষর ও আঙুলের ছাপ শুধু এই চুক্তি সংরক্ষণ ও বিরোধের প্রমাণের জন্য রাখে। আইনি প্রমাণ হিসেবে প্রয়োজন না হলে {E}-এ ইমেইল করে কপি বা মুছে ফেলার অনুরোধ করতে পারি।","مجھے معلوم ہے کہ SNK میرا نام، موبائل، ای میل، دستخط اور انگوٹھے کا نشان صرف اس معاہدے کو محفوظ رکھنے اور تنازعے کے ثبوت کے لیے رکھتا ہے۔ جب تک قانونی ثبوت کے طور پر ضرورت نہ ہو، میں {E} پر ای میل کر کے کاپی یا حذف کی درخواست کر سکتا ہوں۔"],
 foot:["Secure digital agreement | SNK","নিরাপদ ডিজিটাল চুক্তি | SNK","محفوظ ڈیجیٹل معاہدہ | SNK"],
 thumbT:["Thumb impression","বুড়ো আঙুলের ছাপ","انگوٹھے کا نشان"],
 thumbS:["Press your thumb on an ink pad on paper, then take a clear photo and upload it.","কাগজে কালির প্যাডে বুড়ো আঙুল চেপে ছাপ নিন, তারপর পরিষ্কার ছবি তুলে আপলোড করুন।","کاغذ پر سیاہی کے پیڈ سے انگوٹھے کا نشان لیں، پھر واضح تصویر کھینچ کر اپلوڈ کریں۔"],
@@ -297,7 +305,7 @@ const TP=[
 ["<b>Disputes:</b> First discussion and mediation; otherwise the competent court in Dhaka under the laws of Bangladesh.","<b>বিরোধ:</b> প্রথমে আলোচনা ও মধ্যস্থতা; না হলে বাংলাদেশের আইন অনুযায়ী ঢাকার এখতিয়ারসম্পন্ন আদালতে নিষ্পত্তি।","<b>تنازعہ:</b> پہلے بات چیت اور ثالثی؛ ورنہ بنگلہ دیش کے قانون کے مطابق ڈھاکہ کی مجاز عدالت میں فیصلہ۔"],
 ["<b>Entire agreement & digital consent:</b> This is the whole agreement; changes need written consent of both sides. The partner accepts the digital signature and signs willingly, knowing what it says.","<b>সম্পূর্ণ চুক্তি ও ডিজিটাল সম্মতি:</b> এটিই সম্পূর্ণ চুক্তি; পরিবর্তনে উভয় পক্ষের লিখিত সম্মতি লাগবে। পার্টনার ডিজিটাল স্বাক্ষর মেনে নিচ্ছেন এবং স্বেচ্ছায় ও বুঝে সই করছেন।","<b>مکمل معاہدہ اور ڈیجیٹل رضامندی:</b> یہی مکمل معاہدہ ہے؛ تبدیلی کے لیے دونوں فریقوں کی تحریری رضامندی ضروری ہے۔ پارٹنر ڈیجیٹل دستخط کو تسلیم کرتا ہے اور اپنی مرضی سے، سمجھ کر دستخط کر رہا ہے۔"]];
 const D={
- client:{t:"tC",items:TC,ay:"abcd",fields:[["addr","addrC"],["trx","trx"]]},
+ client:{t:"tC",items:TC,ay:"abcd",fields:[["pkg","pkg"],["total","total","num"],["advance","advance","num"],["due","due","date"],["addr","addrC"],["trx","trx"]]},
  partner:{t:"tP",items:TP,ay:"abcdefg",fields:[["addr","addrP"],["payout","payout","tel"],["wname","wname"],["wphone","wphone","tel"]]}};
 
 const $=id=>document.getElementById(id), t=k=>S[k][l];
@@ -307,6 +315,7 @@ try{l=+(localStorage.getItem("lg")||0)}catch(e){}
 function applyLang(){
   document.documentElement.lang=LC[l];document.documentElement.dir=l==2?"rtl":"ltr";document.title=t("brand");
   document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t(e.dataset.i));
+  $("privTxt").textContent=t("priv").replace("{E}",OWNER_EMAIL);
   document.querySelectorAll(".lg button").forEach((b,i)=>b.classList.toggle("on",i==l));
   if(mode){renderTerms();renderExtra()}
   upd();if(res)renderDone();
@@ -319,7 +328,7 @@ function renderTerms(){
    +[...d.ay].map(k=>'<div class="ayat"><b>'+AY[k][0]+'</b> : '+AY[k][1][l]+"</div>").join("")}
 function renderExtra(){
   const old={};document.querySelectorAll("#extra input").forEach(i=>old[i.id]=i.value);
-  $("extra").innerHTML=D[mode].fields.map(f=>'<label for="'+f[0]+'">'+t(f[1])+'</label><input id="'+f[0]+'"'+(f[2]?' type="tel" inputmode="tel" dir="ltr"':"")+">").join("");
+  $("extra").innerHTML=D[mode].fields.map(f=>'<label for="'+f[0]+'">'+t(f[1])+'</label><input id="'+f[0]+'"'+(f[2]==="date"?' type="date"':f[2]==="num"?' inputmode="decimal" dir="ltr"':f[2]?' type="tel" inputmode="tel" dir="ltr"':"")+">").join("");
   for(const k in old)if($(k))$(k).value=old[k]}
 
 const STEP={home:0,"terms-s":1,login:2,signing:3,done:4};
@@ -330,7 +339,7 @@ function show(id){
   window.scrollTo({top:0});if(id==="signing")size()}
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
 document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{
-  demo=false;thumb="";$("thumbPrev").classList.add("hide");mode=b.dataset.mode;res=null;read=false;$("agree").checked=false;renderTerms();renderExtra();upd();show("terms-s");$("terms").scrollTop=0;
+  demo=false;thumb="";$("priv").checked=false;$("thumbPrev").classList.add("hide");mode=b.dataset.mode;res=null;read=false;$("agree").checked=false;renderTerms();renderExtra();upd();show("terms-s");$("terms").scrollTop=0;
   if($("terms").scrollHeight<=$("terms").clientHeight+8){read=true;upd()}});
 $("b1").onclick=()=>show("home");
 $("terms").addEventListener("scroll",()=>{const e=$("terms");if(e.scrollTop+e.clientHeight>=e.scrollHeight-8){read=true;upd()}});
@@ -342,7 +351,13 @@ $("n2").onclick=()=>{
   if($("name").value.trim().length<3)return E("eName");
   if(!/^\+?\d{8,15}$/.test(p))return E("ePhone");
   if(!/^\S+@\S+\.\S+$/.test($("email").value.trim()))return E("eMail");
-  for(const f of D[mode].fields)if($(f[0]).value.trim().length<3)return E("eReq");
+  for(const f of D[mode].fields){const v=$(f[0]).value.trim();
+    if(f[2]==="tel"){if(!/^\+?\d{8,15}$/.test(v.replace(/[\s-]/g,"")))return E("ePhone")}
+    else if(f[2]==="num"){if(!/^\d+(\.\d+)?$/.test(v))return E("eNum")}
+    else if(f[2]==="date"){if(!v)return E("eReq")}
+    else if(v.length<3)return E("eReq")}
+  if(mode==="client"&&+$("advance").value>+$("total").value)return E("eNum");
+  if(!$("priv").checked)return E("ePriv");
   $("e2").textContent="";show("signing")};
 
 // Signature: finger, touch pen, mouse
@@ -364,7 +379,7 @@ $("thumb").onchange=e=>{const f=e.target.files[0];if(!f)return;const im=new Imag
   im.src=URL.createObjectURL(f)};
 $("demoBtn").onclick=()=>{
   document.querySelector("[data-mode=client]").click();demo=true;
-  $("name").value="Demo User";$("phone").value="01700000000";$("email").value="demo@example.com";$("addr").value="Demo Shop, Dhaka";$("trx").value="bKash DEMO123456";
+  $("name").value="Demo User";$("phone").value="01700000000";$("email").value="demo@example.com";$("addr").value="Demo Shop, Dhaka";$("trx").value="bKash DEMO123456";$("pkg").value="Standard Website";$("total").value="15000";$("advance").value="5000";$("due").value=new Date(Date.now()+12096e5).toISOString().slice(0,10);$("priv").checked=true;
   $("agree").checked=true;read=true;upd();
   const c=document.createElement("canvas");c.width=c.height=240;const g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,240,240);g.strokeStyle="#222";g.lineWidth=3;
   for(let i=1;i<=9;i++){g.beginPath();g.ellipse(120,125,i*11,i*13,0,0,7);g.stroke()}
@@ -377,7 +392,7 @@ $("n3").onclick=async()=>{
   const raw=mode+$("terms").innerText+JSON.stringify([vals,fields,sig,thumb]);
   const hash=[...new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(raw)))].map(b=>b.toString(16).padStart(2,"0")).join("");
   $("n3").disabled=true;$("n3").textContent=t("saving");
-  try{if(demo)agId="DEMO";else if(window.saveAgreement)agId=await window.saveAgreement({type:mode,title:S[d.t][0],lang:LC[l],...vals,fields,sig,thumb,terms:$("terms").innerText,hash,status:"pending",ua:navigator.userAgent.slice(0,200)})}
+  try{if(demo)agId="DEMO";else if(window.saveAgreement)agId=await window.saveAgreement({type:mode,title:S[d.t][0],lang:LC[l],...vals,fields,sig,thumb,terms:$("terms").innerText,priv:true,hash,status:"pending",ua:navigator.userAgent.slice(0,200)})}
   catch(e){$("n3").disabled=false;$("n3").textContent=t("signBtn");return $("e3").textContent=t("eSave")}
   $("n3").disabled=false;$("n3").textContent=t("signBtn");
   res={vals,fields,sig,thumb,hash,time:new Date()};renderDone();show("done");if(!demo)sendOwnerMail()};
@@ -404,10 +419,14 @@ applyLang();
 <script type="module">
 // ===== FIREBASE CONFIG: Firebase console > Project settings > Web app theke boshan =====
 const cfg={apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT",appId:"YOUR_APP_ID"};
+const APPCHECK="YOUR_RECAPTCHA_V3_SITE_KEY"; // Firebase App Check (reCAPTCHA v3) site key
+async function guard(app){if(APPCHECK==="YOUR_RECAPTCHA_V3_SITE_KEY")return;
+  const {initializeAppCheck,ReCaptchaV3Provider}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js");
+  initializeAppCheck(app,{provider:new ReCaptchaV3Provider(APPCHECK),isTokenAutoRefreshEnabled:true})}
 if(cfg.apiKey!=="YOUR_API_KEY"){
   const {initializeApp}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
   const {getFirestore,collection,addDoc,serverTimestamp}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-  const db=getFirestore(initializeApp(cfg));
+  const app=initializeApp(cfg);await guard(app);const db=getFirestore(app);
   window.saveAgreement=async d=>(await addDoc(collection(db,"agreements"),{...d,createdAt:serverTimestamp()})).id;
 }
 </script>

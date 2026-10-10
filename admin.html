@@ -43,12 +43,16 @@ dl{display:grid;grid-template-columns:150px 1fr;gap:4px 10px}dt{color:#5B6B67}dd
 <script type="module">
 // ===== index.html-er moto ekoi Firebase config =====
 const cfg={apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT",appId:"YOUR_APP_ID"};
+const APPCHECK="YOUR_RECAPTCHA_V3_SITE_KEY"; // Firebase App Check (reCAPTCHA v3) site key
+async function guard(app){if(APPCHECK==="YOUR_RECAPTCHA_V3_SITE_KEY")return;
+  const {initializeAppCheck,ReCaptchaV3Provider}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js");
+  initializeAppCheck(app,{provider:new ReCaptchaV3Provider(APPCHECK),isTokenAutoRefreshEnabled:true})}
 const $=id=>document.getElementById(id);
 if(cfg.apiKey==="YOUR_API_KEY"){$("le").textContent="Age Firebase config boshan.";throw 0}
 const {initializeApp}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
 const {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
 const {getFirestore,collection,query,orderBy,getDocs,doc,updateDoc}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-const app=initializeApp(cfg),auth=getAuth(app),db=getFirestore(app);
+const app=initializeApp(cfg);await guard(app);const auth=getAuth(app),db=getFirestore(app);
 let all=[];
 $("go").onclick=()=>signInWithEmailAndPassword(auth,$("em").value,$("pw").value).catch(()=>$("le").textContent="Email/password thik nei.");
 $("out").onclick=()=>signOut(auth);

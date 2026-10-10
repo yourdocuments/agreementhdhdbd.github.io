@@ -20,13 +20,17 @@ button{background:var(--teal);color:#fff;border:0;border-radius:10px;padding:12p
 <script type="module">
 // ===== index.html-er moto ekoi Firebase config =====
 const cfg={apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT",appId:"YOUR_APP_ID"};
+const APPCHECK="YOUR_RECAPTCHA_V3_SITE_KEY"; // Firebase App Check (reCAPTCHA v3) site key
+async function guard(app){if(APPCHECK==="YOUR_RECAPTCHA_V3_SITE_KEY")return;
+  const {initializeAppCheck,ReCaptchaV3Provider}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js");
+  initializeAppCheck(app,{provider:new ReCaptchaV3Provider(APPCHECK),isTokenAutoRefreshEnabled:true})}
 const out=document.getElementById("out"),id=new URLSearchParams(location.search).get("id");
 const fail=m=>{out.textContent=m;out.className="card err"};
 if(!id||cfg.apiKey==="YOUR_API_KEY")fail("Agreement link is invalid or not configured.");
 else try{
   const {initializeApp}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
   const {getFirestore,doc,getDoc}=await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-  const s=await getDoc(doc(getFirestore(initializeApp(cfg)),"agreements",id));
+  const app=initializeApp(cfg);await guard(app);const s=await getDoc(doc(getFirestore(app),"agreements",id));
   if(!s.exists())throw 0;const a=s.data();out.remove();
   const mk=(t,p={},...c)=>{const e=document.createElement(t);Object.assign(e,p);e.append(...c);return e};
   const m=document.querySelector("main"),card=(...c)=>m.appendChild(mk("div",{className:"card"},...c));
